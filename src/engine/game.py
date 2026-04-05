@@ -5,17 +5,23 @@ from src.data.constants import (
 from src.engine.renderer import Renderer
 from src.engine.input_handler import InputHandler
 from src.engine.scene_manager import SceneManager
+from src.engine.music import MusicManager
 
 
 class Game:
     def __init__(self):
+        # Pre-init mixer before pygame.init() to ensure correct format
+        from src.engine.music import SAMPLE_RATE, CHANNELS, SAMPLE_WIDTH
+        pygame.mixer.pre_init(frequency=SAMPLE_RATE, size=-SAMPLE_WIDTH * 8, channels=CHANNELS, buffer=2048)
         pygame.init()
         self.window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         self.renderer = Renderer(self.window)
         self.input = InputHandler()
-        self.scene_manager = SceneManager(self.renderer)
+        self.music = MusicManager()
+        self.music.init()
+        self.scene_manager = SceneManager(self.renderer, self.music)
         self.running = True
 
     def run(self, initial_scene):
@@ -40,4 +46,5 @@ class Game:
             self.scene_manager.draw()
             self.renderer.present()
 
+        self.music.stop()
         pygame.quit()

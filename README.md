@@ -32,6 +32,7 @@ It's a black screen with white text. You already know what it looks like. This i
 - **Animated sunrise** that you earn by not dying
 - **A rowboat heading to Estonia** because the film ends that way and we respect the source material
 - **Rain** — it's Helsinki, what did you expect
+- **Procedurally generated music** — 13 unique ambient tracks synthesized from pure math at runtime, because we couldn't afford a composer either
 - **CRT scanlines** — for authenticity, or because we're pretentious, unclear which
 - **Undo system** — because even Franks deserve second chances
 
@@ -95,6 +96,7 @@ Kallio (you are here)
 
 - Python 3.10+ (developed on 3.14 because we live dangerously)
 - pygame-ce >= 2.5.0
+- Speakers or headphones (there's music now, generated from math)
 - A tolerance for Finnish humor (dry, dark, served without garnish)
 - Low expectations
 
@@ -115,6 +117,7 @@ Kallio (you are here)
 | Scene Design | Claude |
 | UI/UX Design | Claude |
 | Quality Assurance | Claude |
+| Music Composition & Synthesis | Claude |
 | Weather Effects (Rain) | Claude |
 | Sunrise Consultant | Claude |
 | Boat Physics | Claude |
@@ -126,7 +129,7 @@ Kallio (you are here)
 A: It's Finnish.
 
 **Q: How long does it take to play?**
-A: 20-30 minutes if you find the right path. 2 minutes if you stay for one more drink.
+A: About 10 minutes if you find the right path. 2 minutes if you stay for one more drink.
 
 **Q: Why are they all named Frank?**
 A: Watch the film. Or don't. Kaurismäki wouldn't care either way.

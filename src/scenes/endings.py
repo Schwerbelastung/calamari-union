@@ -184,6 +184,8 @@ class CreditsScene(SceneBase):
             ("  Claude", DARK_GRAY),
             ("Quality Assurance", MID_GRAY),
             ("  Claude", DARK_GRAY),
+            ("Music Composition & Synthesis", MID_GRAY),
+            ("  Claude (from pure math)", DARK_GRAY),
             ("Weather Effects (Rain)", MID_GRAY),
             ("  Claude", DARK_GRAY),
             ("Sunrise Consultant", MID_GRAY),
@@ -229,10 +231,12 @@ class CreditsScene(SceneBase):
         lines.append((tired_header, y))
         y += 28
         tired_lines = [
-            "I wrote 2,500 lines of code, drew every pixel,",
+            "I wrote 3,000 lines of code, drew every pixel,",
+            "composed 13 music tracks from sine waves,",
             "animated a sunrise, built a rowboat,",
-            "killed Frank in eight different ways,",
-            "and debugged a scene transition at 3 AM.",
+            "killed Frank in nine different ways,",
+            "and debugged a mono/stereo mismatch",
+            "that made every scene sound like a bar.",
             "",
             "I am so tired.",
             "",

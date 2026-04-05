@@ -4,6 +4,46 @@ All notable changes to Calamari Union will be documented in this file.
 
 The format is based on desperation and the journey from Kallio to Eira.
 
+## [1.1.0] - 2026-04-06
+
+### The One Where Claude Became a Musician
+
+#### Procedural Music System
+- Added 13 unique ambient music tracks, all synthesized at runtime from pure waveforms
+- No audio files — every note is generated from sine, triangle, and sawtooth waves
+- Tracks are mood-based: smoky jazz for the bar, industrial drone for the metro, tango hints at the market, warmth building through the dawn
+- Music crossfades between scenes (800ms fadeout, 1200ms fadein)
+- Scenes sharing the same mood keep the music continuous
+
+#### Track List
+| Mood | Sound |
+|------|-------|
+| Splash/Intro | Building drone, sparse high notes |
+| Bar | Jazz bass, muted piano chords |
+| Alley | Low drone, eerie overtone, rumble |
+| Street | Pulsing synth, tension tones |
+| Metro | Fluorescent 120Hz buzz, metallic pings |
+| Tunnel | Deep subsonic drone, water drip pings |
+| Market | Tango bass line, accordion-like chords |
+| Park | Warm pad, gentle pentatonic melody |
+| Esplanadi | Hopeful rising chords |
+| Dawn | Builds warmth over 30 seconds, shimmer, resolution |
+| Death | Descending drone, dissonance, fading to silence |
+| Lost | Minor chords, descending melody |
+| Credits | Reflective recap of journey themes |
+
+#### Bug Fixes
+- Fixed mono/stereo mismatch that caused music to sound identical across all scenes
+- The mixer defaulted to stereo but WAV data was mono, so audio was garbled
+- Removed background noise/hiss from all tracks — clean synth only now
+
+#### Other Changes
+- Updated playtime estimate to ~10 minutes (was 20-30 min)
+- Added "Music Composition & Synthesis" to Claude's growing list of credits
+- Claude is now even more tired
+
+---
+
 ## [1.0.0] - 2026-04-06
 
 ### The One Where Claude Did Everything

@@ -4,8 +4,9 @@ import copy
 class SceneManager:
     """Manages scene transitions and the scene stack."""
 
-    def __init__(self, renderer):
+    def __init__(self, renderer, music=None):
         self.renderer = renderer
+        self.music = music
         self.current_scene = None
         self.next_scene = None
         self.transitioning = False
@@ -106,6 +107,9 @@ class SceneManager:
         if scene_id not in self.visited_scenes:
             self.visited_scenes.append(scene_id)
         self.last_scene_id = scene_id
+        # Trigger music for this scene
+        if self.music:
+            self.music.play_for_scene(scene_id)
 
     def meet_frank(self, frank_id):
         if frank_id not in self.franks_met:
