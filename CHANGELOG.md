@@ -4,6 +4,17 @@ All notable changes to Calamari Union will be documented in this file.
 
 The format is based on desperation and the journey from Kallio to Eira.
 
+## [2.1.1] - 2026-04-08
+
+### The One Where Claude's Finnish Was Corrected
+
+#### Finnish Translation Fixes
+- Fixed 11 grammar errors: wrong noun cases, nonexistent words, incorrect verb forms
+- Fixed 7 unnatural phrasings: anglicisms, awkward word order, predicate forms
+- Fullscreen button made more visible with dark backdrop and brighter icon
+
+---
+
 ## [2.1.0] - 2026-04-07
 
 ### The One Where Frank Learned Finnish

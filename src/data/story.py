@@ -705,7 +705,7 @@ SCENES_FI = {
             "että elämän täytyy olla parempaa jossain muualla.",
             "Se jossain on Eira. Merenranta. Luvattu maa. "
             "Tai ainakin kaupunginosa, jossa on paremmat ravintolat.",
-            "Viidentoista mies, Pekka, on liittynyt heihin. "
+            "Viidestoista mies, Pekka, on liittynyt heihin. "
             "Hänen nimensä ei ole Frank. Hän puhuu englantia. "
             "Kukaan ei kysy miksi.",
             "Tänä yönä he liikkuvat. Kujien, tunnelien ja "
@@ -882,7 +882,7 @@ SCENES_FI = {
     "ch06_market": {
         "texts": [
             "Hakaniemen tori. Kojut ovat suljettuja ja lukittuja, "
-            "niiden sisältö tuntematon ja tuntumaton aamuun asti. "
+            "niiden sisältö tuntematon ja arvaamaton aamuun asti. "
             "Humalainen mies istuu laatikolla ja laulaa jotain, joka voi olla "
             "tango tai rukous.",
             "Kojun takaa ilmestyy Frank. Hänen kanssaan on Pekka, "
@@ -981,7 +981,7 @@ SCENES_FI = {
         "choices": [
             "Kävele rantaviivaa pitkin kohti Eiraa",
             "Istu tämän Frankin kanssa ja juttele",
-            "Ota katua pitkin",
+            "Kulje katua pitkin",
         ],
         "extras": {
             "talk_1": "Frank istuu toisen Frankin viereen. He eivät puhu. "
@@ -1008,9 +1008,9 @@ SCENES_FI = {
             "Pääsit perille. Olet Eirassa.",
             "Se näyttää täsmälleen samalta kuin muu Helsinki, "
             "mutta paremmalla valaistuksella.",
-            "Mutta olet täällä. Ja täällä oleminen on pointti. "
-            "Tai ehkä matka oli pointti. "
-            "Tai ehkä pointtia ei ole, ja se on kaikkein suomalaisin "
+            "Mutta olet täällä. Ja täällä oleminen on tarkoitus. "
+            "Tai ehkä matka oli tarkoitus. "
+            "Tai ehkä tarkoitusta ei ole, ja se on kaikkein suomalaisin "
             "johtopäätös.",
         ],
     },
@@ -1064,7 +1064,7 @@ SCENES_FI = {
     "ch05_cafe": {
         "texts": [
             "Kahvila on auki, koska kahvilat Kalliossa ovat aina auki. "
-            "Valot ovat päänsäryn väriset. Kahvi on "
+            "Valot ovat päänsäryn värisiä. Kahvi on "
             "katumuksen lämpöistä.",
             "Sisällä neljä Frankia istuu eri pöydissä, kukin teeskennellen "
             "ettei muita ole olemassa. Tämä vaatii keskittymistä, "
@@ -1093,7 +1093,7 @@ SCENES_FI = {
         ],
         "choices": [
             "\"Etelään. Kohti tuomiokirkkoa.\"",
-            "\"Pudota minut Kruununhakaan\"",
+            "\"Jätä minut Kruununhakaan\"",
             "\"Aja päin punaista, minulla on kiire\"",
         ],
     },
@@ -1130,7 +1130,7 @@ SCENES_FI = {
             "tähdet. Sen takana, jossain, Esplanadi.",
         ],
         "choices": [
-            "Jatka etelään kohti Esplanadiä",
+            "Jatka etelään kohti Esplanadia",
             "Kävele tuomiokirkon aukiolle",
             "Suuntaa lauttaterminaaliin",
         ],
@@ -1144,14 +1144,14 @@ SCENES_FI = {
             "vain kyyhkysiä ja hiljaisuutta.",
             "Portaiden juuressa Aleksanteri II:n patsas tarkastelee "
             "tyhjää toria sillä ilmeellä, joka tulee siitä, kun on "
-            "seissyt samassa paikassa 130 vuotta ja alkaa saada "
-            "katumuksia.",
+            "seissyt samassa paikassa 130 vuotta ja alkaa "
+            "katua.",
             "Täältä kadut viettävät etelään. Kohti merta. "
             "Kohti Esplanadia. Kohti jotain, joka voisi olla Eira, "
             "jos uskoo tarpeeksi kovasti.",
         ],
         "choices": [
-            "Ylitä tori etelään kohti Esplanadiä",
+            "Ylitä tori etelään kohti Esplanadia",
             "Kävele itään kohti Katajanokkaa",
             "Istu tuomiokirkon portaille ja lepää",
         ],
@@ -1225,13 +1225,13 @@ SCENES_FI = {
             "Frank juoksee. Poliisi jahtaa. Frank on nopea, mutta yö on "
             "nopeampi, ja jalkakäytävä nappaa hänen jalkansa suomalaisen "
             "talven tarkkuudella.",
-            "Juoksemista poliisin edeltä Kruununhaassa. "
+            "Juoksemista poliisilta karkuun Kruununhaassa. "
             "Se on eniten liikuntaa, mitä tämä kaupunginosa on nähnyt vuosiin.",
         ],
     },
     "death_street_patrol": {
         "texts": [
-            "Katua pitkin kulkee suoraan poliisin tiesulun läpi. "
+            "Katu vie suoraan poliisin tiesulun läpi. "
             "He ovat odottaneet koko yön jotakuta juuri Frankin kaltaista.",
             "Niin lähellä Eiraa. Tarpeeksi lähellä haistaakseen meren. "
             "Mutta meri tuoksuu samalta poliisiautosta.",
@@ -1240,7 +1240,7 @@ SCENES_FI = {
     "death_tram_tracks": {
         "texts": [
             "Frank kävelee ratikkakiskoja pitkin. Kiskot hurisevat hänen "
-            "jalkojensa alla taajuudella, joka tuntuu melkein seuranpitoiselta. "
+            "jalkojensa alla taajuudella, joka tuntuu melkein toverilliselta. "
             "Ei ratikoita, hän ajattelee. Ratikoita ei ole koskaan.",
             "On ratikka.",
             "Kuljettaja, joka on ajanut yöhuoltoreittiä yhdentoista vuoden ajan, "
@@ -1272,7 +1272,7 @@ SCENES_FI = {
             "istunut risteyksessä suomalaisen talven kärsivällisyydellä, "
             "seuraa perässä.",
             "Kaksi Frankia varastetussa limusiinissa ajamassa päin punaista kello 3 yöllä. "
-            "Poliisiraportti kirjoittaa itse itsensä. Tuomari ei tarvitse kauaa.",
+            "Poliisiraportti kirjoittaa itsensä. Tuomari ei tarvitse kauaa.",
         ],
     },
     "death_coast_guard": {
@@ -1281,7 +1281,7 @@ SCENES_FI = {
             "ennen kuin taskulamppu löytää hänet. Rajavartija "
             "näyttää väsyneeltä. Frank näyttää kiinni jääneeltä.",
             "Laiva oli menossa Lyypekkiin. Frank on menossa pidätysselliin. "
-            "Lyypekki ei ole Eira, mutta selli ei ole myöskään. Ainakin sellissä "
+            "Lyypekki ei ole Eira, mutta selli ei myöskään ole. Ainakin sellissä "
             "on lämmin.",
         ],
     },
@@ -1332,7 +1332,7 @@ SCENES_FI = {
     "lost_kamppi": {
         "texts": [
             "Länsi. Kamppi. Linja-autoasema. Paikka, josta lähdetään, "
-            "ei saavuta. Frank on sekoittanut suuntansa.",
+            "ei johon saavutaan. Frank on sekoittanut suuntansa.",
             "Hän nousee bussiin. Se menee Espooseen. Espoo ei ole Eira. "
             "Espoo ei ole oikeastaan mitään.",
             "Frank ei koskaan saavuttanut Eiraa. Hän saavutti lähiön. "
@@ -1356,7 +1356,7 @@ SCENES_FI = {
         "texts": [
             "Lauttaterminaali on valoisa ja lämmin ja täynnä ihmisiä, jotka ovat "
             "menossa Tukholmaan. Tukholma ei ole Eira. Tukholma ei ole edes "
-            "Helsinki. Mutta lautta lähtee kahdenkymmennen minuutin kuluttua ja Frank "
+            "Helsinki. Mutta lautta lähtee kahdenkymmenen minuutin kuluttua ja Frank "
             "on kyllästynyt kävelemään.",
             "Hän nousee laivaan. Itämeri on musta ja valtava ja välinpitämätön. "
             "Frank seisoo kaiteella ja katsoo Helsingin kutistuvan.",

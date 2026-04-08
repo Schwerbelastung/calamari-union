@@ -149,7 +149,7 @@ STRINGS = {
         "continue_prompt": "Paina ENTER jatkaaksesi",
 
         # Dawn
-        "speech_bubble": "Eesti, me tullaan!",
+        "speech_bubble": "Täältä tullaan Eesti!",
 
         # Credits
         "credits_title": "C A L A M A R I   U N I O N",
@@ -216,7 +216,7 @@ STRINGS = {
         "credits_thanks": [
             "Aki Kaurismäki, elokuvan tekemisestä",
             "jossa 15 miestä nimeltä Frank",
-            "ja odotuksesta että joku katsoisi sen",
+            "ja siitä odotuksesta, että joku katsoisi sen",
             "",
             "Helsingin kaupunki, pimeydestä",
             "",
@@ -230,7 +230,7 @@ STRINGS = {
             "sävelsin 13 musiikkikappaletta siniaalloista,",
             "animoin auringonnousun, rakensin soutuveneen,",
             "tapoin Frankin neljällätoista eri tavalla,",
-            "eksotin hänet seitsemään muuhun,",
+            "eksytin hänet seitsemään muuhun,",
             "varastin metrojunan, ajoin limusiinia,",
             "ja renderöin Helsingin tuomiokirkon kello 3 yöllä.",
             "",
