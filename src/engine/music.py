@@ -126,22 +126,27 @@ def generate_sound(duration_sec, sample_func):
 
 # --- Music tracks (each returns a pygame.mixer.Sound) ---
 
-def gen_track_bar(duration=24.0):
+def gen_track_bar(duration=36.0):
     """Smoky bar — low jazz bass, muted piano chords, cigarette atmosphere."""
-    # Minor blues progression in low register
+    # Minor blues progression in low register — extended
     bass_notes = [
         (note_freq('E2'), 0.0), (note_freq('E2'), 3.0),
         (note_freq('A2'), 6.0), (note_freq('A2'), 9.0),
         (note_freq('E2'), 12.0), (note_freq('B2'), 15.0),
         (note_freq('A2'), 18.0), (note_freq('E2'), 21.0),
+        (note_freq('A2'), 24.0), (note_freq('E2'), 27.0),
+        (note_freq('B2'), 30.0), (note_freq('A2'), 33.0),
     ]
-    # Sparse piano-like chords
+    # Sparse piano-like chords — extended
     chord_hits = [
         ([note_freq('E3'), note_freq('G3'), note_freq('B3')], 1.5),
         ([note_freq('A3'), note_freq('C4'), note_freq('E4')], 7.0),
         ([note_freq('E3'), note_freq('G3'), note_freq('B3')], 13.0),
         ([note_freq('B3'), note_freq('D4'), note_freq('F#4')], 16.0),
         ([note_freq('A3'), note_freq('C4'), note_freq('E4')], 19.5),
+        ([note_freq('E3'), note_freq('G3'), note_freq('B3')], 24.5),
+        ([note_freq('A3'), note_freq('C4'), note_freq('E4')], 28.0),
+        ([note_freq('B3'), note_freq('D4'), note_freq('F#4')], 31.5),
     ]
 
     def sample(t):
@@ -165,7 +170,7 @@ def gen_track_bar(duration=24.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_alley(duration=20.0):
+def gen_track_alley(duration=30.0):
     """Dark alleys — ambient drone, distant rumble, tension."""
     base_freq = note_freq('D2')
     fifth = note_freq('A2')
@@ -185,7 +190,7 @@ def gen_track_alley(duration=20.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_metro(duration=20.0):
+def gen_track_metro(duration=30.0):
     """Metro station — fluorescent buzz, industrial echoes."""
     def sample(t):
         val = 0.0
@@ -209,7 +214,7 @@ def gen_track_metro(duration=20.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_tunnel(duration=20.0):
+def gen_track_tunnel(duration=30.0):
     """Dark tunnel — deep reverberant drone, dripping water."""
     def sample(t):
         val = 0.0
@@ -235,7 +240,7 @@ def gen_track_tunnel(duration=20.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_street(duration=22.0):
+def gen_track_street(duration=33.0):
     """Hämeentie / Kruununhaka — tense urban ambient, slow pulse."""
     def sample(t):
         val = 0.0
@@ -262,7 +267,7 @@ def gen_track_street(duration=22.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_park(duration=24.0):
+def gen_track_park(duration=36.0):
     """Park scenes — open, quieter, hint of sea, melancholic beauty."""
     def sample(t):
         val = 0.0
@@ -271,7 +276,7 @@ def gen_track_park(duration=24.0):
         pad_e = sine(note_freq('E3'), t) * 0.08
         pad_mod = 0.6 + 0.4 * sine(0.06, t)
         val += (pad_a + pad_e) * pad_mod
-        # Gentle high melody — pentatonic, sparse
+        # Gentle high melody — pentatonic, sparse — extended
         mel_notes = [
             (note_freq('E4'), 0.0, 2.5),
             (note_freq('G4'), 4.0, 2.0),
@@ -279,6 +284,9 @@ def gen_track_park(duration=24.0):
             (note_freq('G4'), 12.5, 2.0),
             (note_freq('E4'), 16.0, 2.5),
             (note_freq('D4'), 20.0, 2.0),
+            (note_freq('E4'), 24.0, 2.5),
+            (note_freq('A4'), 28.0, 2.0),
+            (note_freq('G4'), 31.5, 2.5),
         ]
         for freq, start, dur in mel_notes:
             if start <= t < start + dur:
@@ -292,9 +300,9 @@ def gen_track_park(duration=24.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_market(duration=20.0):
+def gen_track_market(duration=30.0):
     """Hakaniemi market — bluesy, slightly more alive, tango hint."""
-    # Simple tango-ish bass pattern
+    # Simple tango-ish bass pattern — extended
     bass_pattern = [
         (note_freq('A2'), 0.0), (note_freq('E2'), 1.5),
         (note_freq('A2'), 3.0), (note_freq('C3'), 4.5),
@@ -303,6 +311,9 @@ def gen_track_market(duration=20.0):
         (note_freq('A2'), 12.0), (note_freq('C3'), 13.5),
         (note_freq('D3'), 15.0), (note_freq('A2'), 16.5),
         (note_freq('E2'), 18.0), (note_freq('A2'), 19.0),
+        (note_freq('D3'), 20.5), (note_freq('E3'), 22.0),
+        (note_freq('A2'), 23.5), (note_freq('C3'), 25.0),
+        (note_freq('E2'), 26.5), (note_freq('A2'), 28.0),
     ]
 
     def sample(t):
@@ -326,7 +337,7 @@ def gen_track_market(duration=20.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_esplanadi(duration=22.0):
+def gen_track_esplanadi(duration=33.0):
     """Esplanadi — you can smell the sea. Hopeful but uncertain."""
     def sample(t):
         val = 0.0
@@ -337,7 +348,7 @@ def gen_track_esplanadi(duration=22.0):
         val += sine(base * 2, t) * 0.04   # octave
         mod = 0.6 + 0.4 * sine(0.05, t)
         val *= mod
-        # Melodic fragments — ascending
+        # Melodic fragments — ascending — extended
         mel = [
             (note_freq('C4'), 0.0, 2.0),
             (note_freq('E4'), 3.0, 2.0),
@@ -346,6 +357,10 @@ def gen_track_esplanadi(duration=22.0):
             (note_freq('G4'), 13.0, 2.0),
             (note_freq('E4'), 16.0, 2.5),
             (note_freq('C4'), 19.0, 2.0),
+            (note_freq('E4'), 22.0, 2.0),
+            (note_freq('G4'), 25.0, 2.5),
+            (note_freq('A4'), 28.5, 2.0),
+            (note_freq('C5'), 31.0, 2.0),
         ]
         for freq, start, dur in mel:
             if start <= t < start + dur:
@@ -358,18 +373,18 @@ def gen_track_esplanadi(duration=22.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_dawn(duration=30.0):
+def gen_track_dawn(duration=45.0):
     """Eira dawn — warmth, resolution, sunrise. The most beautiful track."""
     def sample(t):
         val = 0.0
-        # Progression: builds warmth over time
-        progress = min(1.0, t / 20.0)  # ramps up over 20 sec
+        # Progression: builds warmth over time — extended ramp
+        progress = min(1.0, t / 30.0)  # ramps up over 30 sec
         # Warm drone — rises in pitch slightly
         base = note_freq('D3') + progress * 10
         val += sine(base, t) * (0.08 + 0.07 * progress)
         val += sine(base * 1.5, t) * (0.04 + 0.04 * progress)
         val += sine(base * 2, t) * 0.03 * progress
-        # Melody — pentatonic D major, slow and deliberate
+        # Melody — pentatonic D major, slow and deliberate — extended
         mel = [
             (note_freq('D4'), 2.0, 3.0),
             (note_freq('F#4'), 6.0, 2.5),
@@ -379,6 +394,10 @@ def gen_track_dawn(duration=30.0):
             (note_freq('F#4'), 20.0, 3.0),
             (note_freq('D4'), 24.0, 3.0),
             (note_freq('D5'), 27.5, 2.5),
+            (note_freq('A4'), 31.0, 3.0),
+            (note_freq('F#4'), 35.0, 2.5),
+            (note_freq('D4'), 38.5, 3.0),
+            (note_freq('D5'), 42.0, 3.0),
         ]
         for freq, start, dur in mel:
             if start <= t < start + dur:
@@ -396,7 +415,7 @@ def gen_track_dawn(duration=30.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_death(duration=12.0):
+def gen_track_death(duration=18.0):
     """Death screen — low somber drone, finality."""
     def sample(t):
         val = 0.0
@@ -414,7 +433,7 @@ def gen_track_death(duration=12.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_lost(duration=16.0):
+def gen_track_lost(duration=24.0):
     """Lost ending — melancholic, wistful, fading away."""
     def sample(t):
         val = 0.0
@@ -423,12 +442,14 @@ def gen_track_lost(duration=16.0):
         val += sine(note_freq('A2'), t) * 0.12 * fade
         val += sine(note_freq('C3'), t) * 0.07 * fade
         val += sine(note_freq('E3'), t) * 0.05 * fade
-        # Slow descending melody
+        # Slow descending melody — extended
         mel = [
             (note_freq('E4'), 1.0, 3.0),
             (note_freq('D4'), 5.0, 2.5),
             (note_freq('C4'), 8.5, 3.0),
             (note_freq('A3'), 12.0, 3.5),
+            (note_freq('E4'), 16.5, 2.5),
+            (note_freq('C4'), 20.0, 3.0),
         ]
         for freq, start, dur in mel:
             if start <= t < start + dur:
@@ -440,15 +461,15 @@ def gen_track_lost(duration=16.0):
     return generate_sound(duration, sample)
 
 
-def gen_track_splash(duration=16.0):
+def gen_track_splash(duration=24.0):
     """Title screen — atmospheric, sets the tone."""
     def sample(t):
         val = 0.0
         # Building drone
-        build = min(1.0, t / 8.0)
+        build = min(1.0, t / 10.0)
         val += sine(note_freq('E2'), t) * 0.12 * build
         val += sine(note_freq('B2'), t) * 0.07 * build
-        # Sparse high notes
+        # Sparse high notes — extended
         if 4.0 < t < 6.0:
             lt = t - 4.0
             env = soft_envelope(lt, 2.0)
@@ -461,12 +482,20 @@ def gen_track_splash(duration=16.0):
             lt = t - 12.0
             env = soft_envelope(lt, 2.5)
             val += sine(note_freq('B4'), t) * env * 0.06
+        if 16.0 < t < 18.5:
+            lt = t - 16.0
+            env = soft_envelope(lt, 2.5)
+            val += sine(note_freq('E4'), t) * env * 0.05
+        if 20.0 < t < 22.5:
+            lt = t - 20.0
+            env = soft_envelope(lt, 2.5)
+            val += sine(note_freq('G4'), t) * env * 0.06
         return val
 
     return generate_sound(duration, sample)
 
 
-def gen_track_credits(duration=30.0):
+def gen_track_credits(duration=45.0):
     """Credits — reflective, all the themes echo."""
     def sample(t):
         val = 0.0
@@ -475,7 +504,7 @@ def gen_track_credits(duration=30.0):
         val += sine(note_freq('A3'), t) * 0.06
         mod = 0.6 + 0.4 * sine(0.04, t)
         val *= mod
-        # Recapitulation melody — fragments from the journey
+        # Recapitulation melody — fragments from the journey — extended
         mel = [
             (note_freq('D4'), 0.0, 2.5),   # Eira theme
             (note_freq('F#4'), 4.0, 2.0),
@@ -485,6 +514,10 @@ def gen_track_credits(duration=30.0):
             (note_freq('F#4'), 18.0, 2.5),
             (note_freq('D4'), 22.0, 3.0),  # Return
             (note_freq('A3'), 26.0, 3.5),  # Resolve
+            (note_freq('D4'), 30.5, 2.5),  # Reprise
+            (note_freq('E4'), 34.0, 2.0),
+            (note_freq('F#4'), 37.0, 2.5),
+            (note_freq('D4'), 40.5, 3.5),  # Final resolve
         ]
         for freq, start, dur in mel:
             if start <= t < start + dur:
@@ -528,13 +561,21 @@ class MusicManager:
         'ch02_dumpster': 'alley',
         'ch03_hameentie': 'street',
         'ch03_courtyard': 'alley',
+        'ch03_rooftop': 'alley',
         'ch04_car': 'street',
         'ch04_metro': 'metro',
+        'ch04_metro_train': 'metro',
         'ch05_tunnels': 'tunnel',
+        'ch05_cafe': 'bar',
+        'ch05_harbor': 'alley',
         'ch06_market': 'market',
+        'ch06_limo': 'street',
         'ch07_park': 'park',
+        'ch07_katajanokka': 'street',
         'ch08_kruununhaka': 'street',
+        'ch08_senate_square': 'street',
         'ch09_esplanadi': 'esplanadi',
+        'ch09_bulevardi': 'esplanadi',
         'ch10_kaivopuisto': 'park',
         'eira': 'dawn',
         'dawn': 'dawn',

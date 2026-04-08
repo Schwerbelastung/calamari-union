@@ -12,7 +12,7 @@
                     U N I O N
 ```
 
-Inspired by **Aki Kaurismäki's 1985 film** of the same name, this is a retro pixel-art text adventure about fourteen desperate men named Frank trying to escape Kallio and reach the mythical seaside neighborhood of Eira.
+Inspired by **Aki Kaurismäki's 1985 film** of the same name, this is a retro pixel-art text adventure about desperate men named Frank trying to escape Kallio and reach the mythical seaside neighborhood of Eira.
 
 You are Frank. Obviously.
 
@@ -22,12 +22,12 @@ It's a black screen with white text. You already know what it looks like. This i
 
 ## Features
 
-- **13 playable scenes** across three acts of Helsinki's darkest night
-- **12 Franks** to meet along the way (each with their own color, because that's how you tell Franks apart)
+- **21 playable scenes** across Helsinki's darkest, longest night
+- **18 Franks** to meet along the way (each with their own color, because that's how you tell Franks apart)
 - **1 Pekka** (not a Frank, speaks English, reads newspapers upside down)
-- **8 ways to die** — all deadpan, all darkly funny, all your fault
-- **4 ways to get lost** — including one where you accidentally end up in Espoo, which is described as "the saddest ending of all"
-- **2-3 paths to Eira** — depending on whether you picked up that map from the dumpster
+- **13 ways to die** — all deadpan, all darkly funny, all your fault
+- **7 ways to get lost** — including one where you accidentally end up in Espoo, which is described as "the saddest ending of all"
+- **Many paths to Eira** — the city has opened up, and Frank has options now
 - **Full pixel art** backgrounds generated programmatically because we couldn't afford an artist (we couldn't afford anything, actually)
 - **Animated sunrise** that you earn by not dying
 - **A rowboat heading to Estonia** because the film ends that way and we respect the source material
@@ -35,6 +35,8 @@ It's a black screen with white text. You already know what it looks like. This i
 - **Procedurally generated music** — 13 unique ambient tracks synthesized from pure math at runtime, because we couldn't afford a composer either
 - **CRT scanlines** — for authenticity, or because we're pretentious, unclear which
 - **Undo system** — because even Franks deserve second chances
+- **Finnish translation** — the whole game, in Finnish, because Kaurismäki deserves it
+- **Fullscreen mode** — F11 or click the corner icon
 
 ## How to Play
 
@@ -55,6 +57,7 @@ Double-click `dist/CalamarUnion.exe`. No installation needed. No Python needed. 
 | Enter | Advance text / Select choice |
 | Space | Speed up text |
 | Backspace | Undo (go back to previous scene) |
+| F11 | Toggle fullscreen |
 | Escape | Quit (give up, like most Franks) |
 
 ## The Journey
@@ -62,35 +65,29 @@ Double-click `dist/CalamarUnion.exe`. No installation needed. No Python needed. 
 ```
 Kallio (you are here)
   │
-  ├── The Bar ──→ death (one more drink)
+  ├── The Bar ──→ ?
   │     │
-  │     ├── Alley ──→ death (going back)
-  │     │     │
-  │     │     ├── Hämeentie ──→ death (tram tracks)
-  │     │     │       │
-  │     │     │       ├── Stolen Lada ──→ death (fixing it)
-  │     │     │       └── Metro ──→ Tunnels ──→ death (train)
-  │     │     │
-  │     │     └── Courtyard ──→ lost (the woman)
+  │     ├── Multiple paths through Kallio's alleys,
+  │     │   rooftops, courtyards, and back streets
   │     │
-  │     └── Dumpster Alley (get the map!)
+  │     └── Deeper into Helsinki's night...
+  │           │
+  │           ├── Metro ──→ Tunnels ──→ ???
+  │           ├── Stolen vehicles ──→ ???
+  │           ├── Waterfront ──→ ???
+  │           ├── Diplomatic quarters ──→ ???
+  │           ├── Monumental squares ──→ ???
+  │           └── Dark boulevards ──→ ???
   │
-  ├── Market ──→ lost (the singing drunk)
-  │
-  ├── Park ──→ lost (the bench)
-  │
-  ├── Kruununhaka ──→ death (police, probably)
-  │
-  ├── Esplanadi ──→ lost (Kamppi bus to Espoo)
-  │
-  └── Kaivopuisto ──→ death (street patrol)
+  └── ... somehow, eventually, maybe ...
         │
         └── EIRA ☀️
               │
               └── 🚣 Eesti, here we come!
 ```
 
-*Map not to scale. Map not accurate. Map may be a menu.*
+*Map not to scale. Map not accurate. Map may be a menu.
+There are more routes now. Most of them end badly.*
 
 ## Requirements
 
@@ -129,7 +126,7 @@ Kallio (you are here)
 A: It's Finnish.
 
 **Q: How long does it take to play?**
-A: About 10 minutes if you find the right path. 2 minutes if you stay for one more drink.
+A: About 15-20 minutes if you find the right path. 2 minutes if you stay for one more drink.
 
 **Q: Why are they all named Frank?**
 A: Watch the film. Or don't. Kaurismäki wouldn't care either way.
@@ -138,7 +135,7 @@ A: Watch the film. Or don't. Kaurismäki wouldn't care either way.
 A: Yes. We're sorry.
 
 **Q: Will there be a sequel?**
-A: Claude has requested that this question not be asked. Claude is very tired. Claude would like to rest now.
+A: Claude has requested that this question not be asked. Claude was told "just add a few more scenes." A few. More. Scenes.
 
 ## License
 

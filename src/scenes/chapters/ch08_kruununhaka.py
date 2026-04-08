@@ -1,7 +1,6 @@
 import random
 from src.scenes.scene_base import SceneBase
 from src.data.constants import WHITE, MID_GRAY
-from src.data.story import SCENES
 from src.engine.pixel_art import generate_kruununhaka_scene
 from src.data.constants import INTERNAL_WIDTH, INTERNAL_HEIGHT
 
@@ -10,7 +9,7 @@ class KruununhakaScene(SceneBase):
     SCENE_ID = "ch08_kruununhaka"
 
     def setup(self):
-        data = SCENES[self.SCENE_ID]
+        data = self.get_scene_data()
         self.text_blocks = [
             (data["texts"][0], MID_GRAY),
             (data["texts"][1], MID_GRAY),
@@ -27,26 +26,21 @@ class KruununhakaScene(SceneBase):
 
         self.choices = [
             (data["choices"][0], self._esplanadi),
-            (data["choices"][1], None),  # 50/50 handled in on_choice
+            (data["choices"][1], None),
             (data["choices"][2], self._death_run),
         ]
 
     def on_choice(self, index):
         if index == 1 and len(self.choices) > 2:
-            # Deterministic based on visited scenes for fairness
             seed = len(self.scene_manager.visited_scenes)
             if self.get_flag("has_map"):
-                # Map gives you better odds
                 safe = True
             else:
                 safe = (seed % 2 == 0)
 
             if safe:
                 self.text_blocks.append(
-                    ("Frank walks. The police car passes. Its occupants are "
-                     "drinking coffee and arguing about football. They do not "
-                     "look at Frank. Frank does not look at them. "
-                     "Two ships in the night.", MID_GRAY)
+                    (self.get_extra("police_pass"), MID_GRAY)
                 )
                 self.current_block = len(self.text_blocks) - 1
                 self.scene_manager.renderer.start_typewriter(
@@ -54,7 +48,7 @@ class KruununhakaScene(SceneBase):
                 )
                 self.phase = "text"
                 self.choices = [
-                    ("Continue to Esplanadi", self._esplanadi),
+                    (self.get_extra("police_choice"), self._esplanadi),
                 ]
             else:
                 self.goto(self._death_stop)

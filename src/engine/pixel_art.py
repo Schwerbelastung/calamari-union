@@ -537,6 +537,324 @@ def generate_eira_scene():
     return s
 
 
+def generate_rooftop_scene():
+    """Kallio rooftop at night — city skyline, ventilation pipes, gap between buildings."""
+    s = create_surface()
+    # Night sky
+    pygame.draw.rect(s, (5, 8, 18), (0, 0, INTERNAL_WIDTH, 180))
+    # Stars
+    for _ in range(30):
+        sx = random.randint(0, INTERNAL_WIDTH)
+        sy = random.randint(0, 120)
+        brightness = random.randint(35, 75)
+        s.set_at((sx, sy), (brightness, brightness, brightness + 10))
+    # Distant city skyline
+    for i in range(12):
+        bx = i * 55
+        bh = random.randint(30, 80)
+        pygame.draw.rect(s, (12, 14, 20), (bx, 180 - bh, 50, bh))
+        if random.random() < 0.3:
+            pygame.draw.rect(s, (40, 35, 20), (bx + random.randint(5, 35),
+                             180 - bh + random.randint(5, max(6, bh - 10)), 6, 8))
+    # Current rooftop (left building)
+    pygame.draw.rect(s, (28, 26, 30), (0, 180, 280, 180))
+    pygame.draw.rect(s, (32, 30, 34), (0, 175, 280, 8))
+    # Ventilation pipes
+    pygame.draw.rect(s, (40, 40, 45), (60, 160, 20, 20))
+    pygame.draw.rect(s, (45, 45, 50), (58, 155, 24, 8))
+    pygame.draw.rect(s, (40, 40, 45), (180, 150, 25, 30))
+    pygame.draw.rect(s, (45, 45, 50), (178, 145, 29, 8))
+    # Gap
+    pygame.draw.rect(s, (2, 3, 8), (280, 180, 60, 180))
+    # Target building (right)
+    pygame.draw.rect(s, (25, 23, 28), (340, 190, 300, 170))
+    pygame.draw.rect(s, (30, 28, 32), (340, 185, 300, 8))
+    # Chimney on right building
+    pygame.draw.rect(s, (35, 33, 38), (500, 155, 15, 35))
+    # Alley far below (faint details)
+    pygame.draw.rect(s, (8, 8, 10), (290, 340, 40, 20))
+    return s
+
+
+def generate_metro_train_scene():
+    """Maintenance train in the metro tunnel — controls, dim cab light."""
+    s = create_surface()
+    # Tunnel around the train
+    pygame.draw.polygon(s, (15, 15, 18),
+                        [(0, 0), (150, 80), (150, 280), (0, 360)])
+    pygame.draw.polygon(s, (15, 15, 18),
+                        [(640, 0), (490, 80), (490, 280), (640, 360)])
+    pygame.draw.polygon(s, (12, 12, 14),
+                        [(0, 0), (640, 0), (490, 80), (150, 80)])
+    # Train cab interior
+    pygame.draw.rect(s, (30, 30, 35), (150, 80, 340, 200))
+    # Windshield (dark tunnel ahead)
+    pygame.draw.rect(s, (8, 10, 15), (180, 90, 280, 100))
+    # Distant tunnel light through windshield
+    pygame.draw.circle(s, (18, 20, 16), (320, 140), 20)
+    pygame.draw.circle(s, (25, 27, 22), (320, 140), 8)
+    # Dashboard
+    pygame.draw.rect(s, (25, 25, 30), (180, 190, 280, 30))
+    # Controls — lever, buttons
+    pygame.draw.rect(s, (50, 45, 35), (250, 175, 8, 20))
+    pygame.draw.circle(s, (60, 50, 35), (254, 172), 5)
+    # Indicator lights
+    pygame.draw.circle(s, (30, 60, 30), (300, 198), 4)
+    pygame.draw.circle(s, (60, 30, 30), (330, 198), 4)
+    pygame.draw.circle(s, (50, 50, 20), (360, 198), 4)
+    # Cab ceiling light (dim)
+    glow = pygame.Surface((120, 60), pygame.SRCALPHA)
+    pygame.draw.ellipse(glow, (40, 40, 35, 25), (0, 0, 120, 60))
+    s.blit(glow, (260, 75))
+    # Floor
+    pygame.draw.rect(s, (20, 20, 22), (150, 280, 340, 80))
+    # Rails visible below windshield
+    pygame.draw.line(s, (35, 35, 40), (220, 190), (280, 140), 1)
+    pygame.draw.line(s, (35, 35, 40), (420, 190), (360, 140), 1)
+    return s
+
+
+def generate_cafe_scene():
+    """Late-night cafe in Kallio — harsh light, many Franks."""
+    s = create_surface()
+    # Ceiling
+    pygame.draw.rect(s, (35, 30, 28), (0, 0, INTERNAL_WIDTH, 60))
+    # Fluorescent light
+    pygame.draw.rect(s, (80, 75, 60), (200, 55, 240, 4))
+    glow = pygame.Surface((300, 50), pygame.SRCALPHA)
+    pygame.draw.ellipse(glow, (50, 48, 38, 18), (0, 0, 300, 50))
+    s.blit(glow, (170, 35))
+    # Walls
+    pygame.draw.rect(s, (32, 28, 26), (0, 60, INTERNAL_WIDTH, 160))
+    # Window (dark outside, rain streaks)
+    pygame.draw.rect(s, (8, 12, 20), (400, 80, 180, 100))
+    pygame.draw.rect(s, (35, 32, 30), (398, 78, 184, 104), 2)
+    for _ in range(6):
+        rx = random.randint(405, 575)
+        pygame.draw.line(s, (15, 20, 30), (rx, 82), (rx - 3, 175), 1)
+    # Floor
+    pygame.draw.rect(s, (28, 24, 22), (0, 220, INTERNAL_WIDTH, 140))
+    # Tables with chairs
+    for tx in [80, 220, 360]:
+        pygame.draw.rect(s, (50, 40, 30), (tx, 240, 60, 4))
+        pygame.draw.rect(s, (45, 38, 28), (tx + 26, 244, 8, 30))
+        # Chairs
+        pygame.draw.rect(s, (40, 35, 28), (tx - 10, 250, 6, 20))
+        pygame.draw.rect(s, (40, 35, 28), (tx + 64, 250, 6, 20))
+    # Counter in background
+    pygame.draw.rect(s, (45, 35, 28), (0, 200, 150, 25))
+    # Coffee cups on tables
+    for tx in [95, 235, 375]:
+        pygame.draw.rect(s, (60, 55, 50), (tx, 236, 6, 5))
+    return s
+
+
+def generate_limo_scene():
+    """Inside a long black car — city lights passing."""
+    s = create_surface()
+    # Car interior (dark leather)
+    pygame.draw.rect(s, (18, 16, 14), (0, 0, INTERNAL_WIDTH, INTERNAL_HEIGHT))
+    # Roof
+    pygame.draw.rect(s, (15, 13, 12), (0, 0, INTERNAL_WIDTH, 40))
+    # Rear window (city passing by)
+    pygame.draw.rect(s, (8, 12, 22), (60, 50, 520, 130))
+    # Passing city lights through window
+    for _ in range(8):
+        lx = random.randint(70, 570)
+        ly = random.randint(100, 160)
+        lw = random.randint(15, 40)
+        color = random.choice([(40, 35, 20), (35, 40, 45), (45, 30, 20)])
+        pygame.draw.rect(s, color, (lx, ly, lw, random.randint(5, 15)))
+    # Streetlights streaks
+    for _ in range(4):
+        lx = random.randint(80, 560)
+        pygame.draw.line(s, (50, 48, 30), (lx, 55), (lx + 20, 55), 2)
+    # Back seat
+    pygame.draw.rect(s, (22, 18, 15), (40, 200, 560, 80))
+    pygame.draw.rect(s, (25, 21, 18), (40, 180, 560, 25))
+    # Seat dividers
+    pygame.draw.line(s, (20, 16, 13), (240, 200), (240, 280), 1)
+    # Floor
+    pygame.draw.rect(s, (12, 10, 10), (40, 280, 560, 80))
+    # Pine air freshener hanging from mirror (barely visible)
+    pygame.draw.polygon(s, (20, 35, 15), [(320, 50), (315, 65), (325, 65)])
+    return s
+
+
+def generate_harbor_scene():
+    """Industrial harbor at night — cranes, bollards, dark water."""
+    s = create_surface()
+    # Night sky
+    pygame.draw.rect(s, (5, 7, 15), (0, 0, INTERNAL_WIDTH, 100))
+    # Cranes (silhouettes)
+    for cx in [120, 400]:
+        # Vertical mast
+        pygame.draw.rect(s, (18, 18, 22), (cx, 20, 6, 160))
+        # Horizontal boom
+        pygame.draw.line(s, (18, 18, 22), (cx - 60, 30), (cx + 80, 30), 3)
+        # Cable
+        pygame.draw.line(s, (22, 22, 26), (cx + 70, 30), (cx + 70, 80), 1)
+    # Warehouse buildings
+    pygame.draw.rect(s, (20, 18, 16), (0, 100, 200, 80))
+    pygame.draw.rect(s, (22, 20, 18), (450, 90, 190, 90))
+    # Dock/pier
+    pygame.draw.rect(s, (25, 22, 18), (0, 180, INTERNAL_WIDTH, 40))
+    # Bollards
+    for bx in [100, 250, 420, 550]:
+        pygame.draw.rect(s, (40, 38, 35), (bx, 175, 10, 12))
+        pygame.draw.rect(s, (45, 42, 38), (bx - 2, 172, 14, 6))
+    # Water
+    for wy in range(220, 360):
+        wave_color = (5 + (wy % 3), 8 + (wy % 4), 18 + (wy % 5))
+        pygame.draw.line(s, wave_color, (0, wy), (INTERNAL_WIDTH, wy))
+    # Ship silhouette in distance
+    pygame.draw.rect(s, (12, 12, 16), (350, 230, 150, 30))
+    pygame.draw.rect(s, (14, 14, 18), (440, 210, 20, 25))
+    # Dock light reflection in water
+    for _ in range(5):
+        rx = random.randint(80, 560)
+        ry = random.randint(240, 340)
+        pygame.draw.line(s, (15, 18, 25), (rx, ry), (rx + random.randint(5, 20), ry), 1)
+    return s
+
+
+def generate_katajanokka_scene():
+    """Red brick diplomatic quarter — embassies, iron gates."""
+    s = create_surface()
+    # Sky with cathedral silhouette
+    pygame.draw.rect(s, (6, 8, 16), (0, 0, INTERNAL_WIDTH, 120))
+    # Uspenski Cathedral silhouette (onion domes)
+    pygame.draw.rect(s, (14, 12, 18), (400, 40, 120, 80))
+    pygame.draw.circle(s, (14, 12, 18), (430, 35), 15)
+    pygame.draw.circle(s, (14, 12, 18), (460, 25), 20)
+    pygame.draw.circle(s, (14, 12, 18), (490, 35), 15)
+    # Spires on domes
+    for dx in [430, 460, 490]:
+        pygame.draw.line(s, (16, 14, 20), (dx, 10), (dx, 25), 2)
+    # Red brick buildings
+    for i in range(4):
+        bx = i * 140
+        bh = random.randint(100, 140)
+        # Brick color (dark red-brown)
+        pygame.draw.rect(s, (35, 18, 15), (bx, 200 - bh, 130, bh))
+        # Brick pattern hints
+        for by in range(200 - bh + 5, 195, 8):
+            for bbx in range(bx + 2, bx + 128, 16):
+                offset = 8 if ((by - (200 - bh)) // 8) % 2 else 0
+                pygame.draw.rect(s, (32, 16, 13),
+                                 (bbx + offset, by, 14, 6), 1)
+        # Windows with frames
+        for wy in range(200 - bh + 15, 190, 30):
+            for wx in range(bx + 15, bx + 115, 30):
+                if random.random() < 0.15:
+                    pygame.draw.rect(s, (45, 40, 25), (wx, wy, 12, 18))
+                else:
+                    pygame.draw.rect(s, (10, 10, 14), (wx, wy, 12, 18))
+    # Iron gate
+    pygame.draw.rect(s, (30, 30, 32), (250, 170, 4, 35))
+    pygame.draw.rect(s, (30, 30, 32), (310, 170, 4, 35))
+    for gx in range(254, 310, 8):
+        pygame.draw.rect(s, (28, 28, 30), (gx, 172, 2, 30))
+    pygame.draw.line(s, (30, 30, 32), (250, 178), (314, 178), 1)
+    # Sidewalk
+    pygame.draw.rect(s, (22, 20, 18), (0, 200, INTERNAL_WIDTH, 20))
+    # Cobblestone road
+    pygame.draw.rect(s, (18, 16, 14), (0, 220, INTERNAL_WIDTH, 140))
+    for _ in range(30):
+        cx = random.randint(0, INTERNAL_WIDTH)
+        cy = random.randint(225, 350)
+        pygame.draw.rect(s, (22, 20, 18), (cx, cy, 8, 5))
+    return s
+
+
+def generate_senate_square_scene():
+    """Senate Square — massive white cathedral, empty cobblestones."""
+    s = create_surface()
+    # Night sky
+    pygame.draw.rect(s, (5, 7, 15), (0, 0, INTERNAL_WIDTH, 80))
+    # Stars
+    for _ in range(15):
+        sx = random.randint(0, INTERNAL_WIDTH)
+        sy = random.randint(0, 60)
+        s.set_at((sx, sy), (50, 50, 55))
+    # Cathedral (white, massive)
+    pygame.draw.rect(s, (40, 40, 45), (150, 40, 340, 100))
+    # Dome
+    pygame.draw.ellipse(s, (45, 45, 50), (250, 10, 140, 60))
+    # Cross on top
+    pygame.draw.line(s, (55, 55, 60), (320, 2), (320, 15), 2)
+    pygame.draw.line(s, (55, 55, 60), (314, 8), (326, 8), 2)
+    # Columns (front facade)
+    for cx in range(180, 470, 30):
+        pygame.draw.rect(s, (48, 48, 52), (cx, 60, 6, 80))
+    # Steps (wide, cascading down)
+    for step in range(6):
+        y = 140 + step * 12
+        w_shrink = step * 15
+        color_val = 35 - step * 2
+        pygame.draw.rect(s, (color_val, color_val, color_val + 3),
+                         (150 - w_shrink, y, 340 + w_shrink * 2, 12))
+    # Square (cobblestones)
+    pygame.draw.rect(s, (18, 18, 20), (0, 212, INTERNAL_WIDTH, 148))
+    for _ in range(50):
+        cx = random.randint(0, INTERNAL_WIDTH)
+        cy = random.randint(215, 355)
+        pygame.draw.rect(s, (22, 22, 24), (cx, cy, 8, 5))
+    # Alexander II statue
+    pygame.draw.rect(s, (30, 30, 32), (310, 240, 20, 50))
+    pygame.draw.rect(s, (35, 35, 38), (305, 235, 30, 10))
+    pygame.draw.rect(s, (32, 32, 35), (315, 220, 10, 18))
+    return s
+
+
+def generate_bulevardi_scene():
+    """Bulevardi — long dark street, kiosk glow, old apartment buildings."""
+    s = create_surface()
+    # Sky
+    pygame.draw.rect(s, (6, 9, 18), (0, 0, INTERNAL_WIDTH, 80))
+    # Old apartment buildings (both sides, tall, dignified)
+    for i in range(4):
+        bx = i * 50
+        bh = random.randint(120, 170)
+        pygame.draw.rect(s, (25 + i * 2, 23 + i, 28 + i), (bx, 200 - bh, 45, bh))
+        for wy in range(200 - bh + 15, 195, 25):
+            for wx in range(bx + 8, bx + 40, 15):
+                if random.random() < 0.12:
+                    pygame.draw.rect(s, (45, 40, 25), (wx, wy, 8, 12))
+                else:
+                    pygame.draw.rect(s, (12, 12, 16), (wx, wy, 8, 12))
+    for i in range(4):
+        bx = 440 + i * 50
+        bh = random.randint(120, 170)
+        pygame.draw.rect(s, (25 + i * 2, 23 + i, 28 + i), (bx, 200 - bh, 45, bh))
+        for wy in range(200 - bh + 15, 195, 25):
+            for wx in range(bx + 8, bx + 40, 15):
+                if random.random() < 0.12:
+                    pygame.draw.rect(s, (45, 40, 25), (wx, wy, 8, 12))
+                else:
+                    pygame.draw.rect(s, (12, 12, 16), (wx, wy, 8, 12))
+    # Street
+    pygame.draw.rect(s, (18, 18, 20), (200, 200, 240, 160))
+    # Sidewalks
+    pygame.draw.rect(s, (22, 20, 18), (180, 200, 25, 160))
+    pygame.draw.rect(s, (22, 20, 18), (435, 200, 25, 160))
+    # Kiosk (glowing warm — the lighthouse)
+    pygame.draw.rect(s, (45, 40, 25), (280, 220, 80, 50))
+    pygame.draw.rect(s, (60, 55, 30), (285, 225, 70, 20))
+    # Kiosk glow
+    glow = pygame.Surface((160, 100), pygame.SRCALPHA)
+    pygame.draw.ellipse(glow, (50, 45, 25, 20), (0, 0, 160, 100))
+    s.blit(glow, (240, 200))
+    # Streetlight
+    pygame.draw.rect(s, (40, 40, 45), (380, 130, 3, 70))
+    light_glow = pygame.Surface((40, 40), pygame.SRCALPHA)
+    pygame.draw.circle(light_glow, (35, 33, 22, 25), (20, 20), 20)
+    s.blit(light_glow, (362, 115))
+    # Lamppost
+    pygame.draw.rect(s, (40, 40, 45), (220, 140, 3, 60))
+    return s
+
+
 def generate_death_vignette():
     """Dark death screen with vignette effect."""
     s = create_surface()

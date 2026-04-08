@@ -1,6 +1,5 @@
 from src.scenes.scene_base import SceneBase
 from src.data.constants import WHITE, FRANK_COLORS, MID_GRAY
-from src.data.story import SCENES
 from src.engine.pixel_art import generate_dumpster_alley_scene, generate_frank_sprite
 from src.engine.animation import RainSystem
 from src.data.constants import INTERNAL_WIDTH, INTERNAL_HEIGHT
@@ -10,7 +9,7 @@ class DumpsterAlleyScene(SceneBase):
     SCENE_ID = "ch02_dumpster"
 
     def setup(self):
-        data = SCENES[self.SCENE_ID]
+        data = self.get_scene_data()
         self.text_blocks = [
             (data["texts"][0], MID_GRAY),
             (data["texts"][1], FRANK_COLORS["frank_3"]),
@@ -26,7 +25,7 @@ class DumpsterAlleyScene(SceneBase):
         from src.scenes.chapters.ch03_hameentie import HameentieScene
 
         self.choices = [
-            (data["choices"][0], None),  # handled in on_choice
+            (data["choices"][0], None),
             (data["choices"][1], HameentieScene()),
         ]
         self._hameentie = HameentieScene()
@@ -35,10 +34,7 @@ class DumpsterAlleyScene(SceneBase):
         if index == 0 and not self.get_flag("has_map"):
             self.set_flag("has_map")
             self.text_blocks.append(
-                ("Frank takes the map. It is damp and smells of coffee grounds. "
-                 "Some of the streets are labeled. Some are not. "
-                 "It is the most helpful thing that has happened all night.",
-                 WHITE)
+                (self.get_extra("map_taken"), WHITE)
             )
             self.current_block = len(self.text_blocks) - 1
             self.scene_manager.renderer.start_typewriter(
@@ -46,7 +42,7 @@ class DumpsterAlleyScene(SceneBase):
             )
             self.phase = "text"
             self.choices = [
-                ("Continue toward Hameentie", self._hameentie),
+                (self.get_extra("map_choice"), self._hameentie),
             ]
         else:
             super().on_choice(index)

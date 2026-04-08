@@ -11,6 +11,7 @@ class SceneManager:
         self.next_scene = None
         self.transitioning = False
         self.transition_phase = None  # "out" or "in"
+        self.language = "en"  # "en" or "fi"
         self.game_flags = {}  # persistent flags across scenes (e.g. "has_map")
         self.visited_scenes = []  # track which scenes were visited
         self.franks_met = []  # track which Franks were encountered

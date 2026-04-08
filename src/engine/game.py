@@ -23,6 +23,7 @@ class Game:
         self.music.init()
         self.scene_manager = SceneManager(self.renderer, self.music)
         self.running = True
+        self.fullscreen = False
 
     def run(self, initial_scene):
         self.scene_manager.set_scene(initial_scene, immediate=True)
@@ -40,6 +41,18 @@ class Game:
                 self.running = False
                 break
 
+            # F11 or Alt+Enter toggles fullscreen
+            if self.input.just_pressed(pygame.K_F11) or (
+                self.input.just_pressed(pygame.K_RETURN) and
+                (pygame.key.get_mods() & pygame.KMOD_ALT)
+            ):
+                self._toggle_fullscreen()
+
+            # Fullscreen button click
+            if self.input.mouse_just_clicked:
+                if self.renderer.check_fs_button_click(*self.input.mouse_click_pos):
+                    self._toggle_fullscreen()
+
             self.scene_manager.update(dt, self.input)
 
             self.renderer.clear()
@@ -48,3 +61,11 @@ class Game:
 
         self.music.stop()
         pygame.quit()
+
+    def _toggle_fullscreen(self):
+        self.fullscreen = not self.fullscreen
+        if self.fullscreen:
+            self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        else:
+            self.window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.renderer.window = self.window

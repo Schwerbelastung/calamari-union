@@ -4,6 +4,70 @@ All notable changes to Calamari Union will be documented in this file.
 
 The format is based on desperation and the journey from Kallio to Eira.
 
+## [2.1.0] - 2026-04-07
+
+### The One Where Frank Learned Finnish
+
+#### Finnish Language Support
+- Full Finnish translation of all 43 scenes, 13 deaths, 7 lost endings, and all UI text
+- Language selection screen on splash: "English" or "Suomeksi"
+- Deadpan Kaurismäki tone preserved throughout — the dryness translates
+- Credits, speech bubbles, and all UI hints translated
+- Claude's exhaustion note now includes a complaint about the translation
+
+#### Fullscreen Mode
+- F11 or Alt+Enter toggles fullscreen
+- Clickable fullscreen icon in the top-right corner
+- Aspect ratio preserved with black bars at any resolution
+
+#### UI Improvements
+- Semi-transparent dark backdrop behind choice options for readability
+- Auto-scrolling text — long scenes no longer overflow the screen
+- Switched to Consolas font with anti-aliasing for cleaner text
+- Font size kept at 16px to prevent overflow
+
+#### Build System
+- Added build.bat for one-click executable builds
+
+---
+
+## [2.0.0] - 2026-04-07
+
+### The One Where The Journey Got Longer (And Darker)
+
+#### Major Story Expansion
+- Added 8 new playable scenes, roughly doubling the adventure
+- Added 6 new Franks to encounter (Franks 13-18), each with unique color and personality
+- Added 5 new death endings — the world has more ways to stop a Frank now
+- Added 3 new lost endings — more places to forget about Eira
+- Many new routes to Eira — the city has opened up
+- Fixed the courtyard-to-tunnel teleportation inconsistency — Frank no longer defies physics
+- New scenes feature encounters from the film: stealing infrastructure, unlikely vehicles, crowded cafes, diplomatic quarters, monumental architecture, and back-street approaches
+- Total: 21 playable scenes, 13 deaths, 7 lost endings
+
+#### Music Improvements
+- Extended all 13 music tracks by ~50% with additional melodic content
+- Tracks now breathe more before looping — less repetition, more atmosphere
+- Added new note patterns, bass lines, and melodic phrases to every track
+- Dawn track extended to 45 seconds for the full sunrise experience
+
+#### Readability
+- Switched from Pygame's default bitmap font to Consolas — cleaner, more readable
+- Enabled anti-aliasing on all text rendering across every scene
+- Bumped font size from 16px to 18px
+- All text — narrative, choices, credits, splash, speech bubbles — now renders smoothly
+
+#### Build System
+- Added build.bat script for one-click executable builds
+- Reads version from package.json automatically
+
+#### Credits
+- Updated Claude's exhaustion note to reflect the expanded scope
+- Added all new Franks to the credits roll
+- Claude's line count claim has been updated. Claude is not okay.
+
+---
+
 ## [1.1.0] - 2026-04-06
 
 ### The One Where Claude Became a Musician

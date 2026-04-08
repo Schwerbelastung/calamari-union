@@ -2,7 +2,9 @@ import pygame
 from src.scenes.scene_base import SceneBase
 from src.data.constants import (
     INTERNAL_WIDTH, INTERNAL_HEIGHT, WHITE, DARK_GRAY, MID_GRAY, BLACK,
+    FONT_NAME,
 )
+from src.data.strings import STRINGS
 
 
 class SplashScene(SceneBase):
@@ -19,21 +21,33 @@ class SplashScene(SceneBase):
         self.phase = "fade_title"
         self.title_surface = None
         self.subtitle_surface = None
+        self.selected_lang = 0  # 0 = English, 1 = Suomeksi
 
     def setup(self):
         renderer = self.scene_manager.renderer
-        # Pre-render title
-        title_font = pygame.font.Font(None, 36)
-        self.title_surface = title_font.render("C A L A M A R I", False, WHITE)
-        self.title_surface2 = title_font.render("U N I O N", False, WHITE)
-        sub_font = pygame.font.Font(None, 14)
+        title_font = pygame.font.SysFont(FONT_NAME, 36)
+        self.title_surface = title_font.render("C A L A M A R I", True, WHITE)
+        self.title_surface2 = title_font.render("U N I O N", True, WHITE)
+        sub_font = pygame.font.SysFont(FONT_NAME, 14)
         self.subtitle_surface = sub_font.render(
-            "A text adventure inspired by the film by Aki Kaurismaki", False, MID_GRAY
+            STRINGS["en"]["subtitle"], True, MID_GRAY
         )
-        self.prompt_surface = renderer.small_font.render(
-            "Press ENTER to begin", False, DARK_GRAY
+        # Language options
+        self.lang_prompt_surface = renderer.small_font.render(
+            STRINGS["en"]["lang_prompt"], True, MID_GRAY
         )
-        # Generate the Helsinki skyline silhouette
+        self.lang_en_surface = renderer.font.render(
+            STRINGS["en"]["lang_en"], True, WHITE
+        )
+        self.lang_fi_surface = renderer.font.render(
+            STRINGS["en"]["lang_fi"], True, WHITE
+        )
+        self.lang_en_dim = renderer.font.render(
+            STRINGS["en"]["lang_en"], True, DARK_GRAY
+        )
+        self.lang_fi_dim = renderer.font.render(
+            STRINGS["en"]["lang_fi"], True, DARK_GRAY
+        )
         self._generate_skyline()
 
     def _generate_skyline(self):
@@ -44,7 +58,6 @@ class SplashScene(SceneBase):
             w = random.randint(20, 60)
             h = random.randint(20, 65)
             pygame.draw.rect(self.skyline, (12, 12, 16), (x, 80 - h, w, h))
-            # Windows
             for wy in range(80 - h + 5, 75, 8):
                 for wx in range(x + 4, x + w - 4, 8):
                     if random.random() < 0.15:
@@ -61,12 +74,16 @@ class SplashScene(SceneBase):
         elif self.phase == "fade_subtitle":
             self.subtitle_alpha = min(255, self.subtitle_alpha + 4)
             if self.subtitle_alpha >= 255:
-                self.phase = "waiting"
-        elif self.phase == "waiting":
-            self.prompt_alpha = int(abs((self.timer % 2000) - 1000) / 1000 * 180) + 40
-
-        if input_handler.just_pressed(pygame.K_RETURN):
-            self.goto(self.next_scene)
+                self.phase = "lang_select"
+        elif self.phase == "lang_select":
+            self.prompt_alpha = min(255, self.prompt_alpha + 5)
+            if input_handler.just_pressed(pygame.K_UP):
+                self.selected_lang = 0
+            elif input_handler.just_pressed(pygame.K_DOWN):
+                self.selected_lang = 1
+            elif input_handler.just_pressed(pygame.K_RETURN):
+                self.scene_manager.language = "en" if self.selected_lang == 0 else "fi"
+                self.goto(self.next_scene)
 
     def draw(self, renderer):
         # Skyline at bottom
@@ -77,22 +94,49 @@ class SplashScene(SceneBase):
             t = self.title_surface.copy()
             t.set_alpha(self.title_alpha)
             tx = (INTERNAL_WIDTH - t.get_width()) // 2
-            renderer.surface.blit(t, (tx, 100))
+            renderer.surface.blit(t, (tx, 80))
             t2 = self.title_surface2.copy()
             t2.set_alpha(self.title_alpha)
             tx2 = (INTERNAL_WIDTH - t2.get_width()) // 2
-            renderer.surface.blit(t2, (tx2, 135))
+            renderer.surface.blit(t2, (tx2, 115))
 
         # Subtitle
         if self.subtitle_alpha > 0:
             st = self.subtitle_surface.copy()
             st.set_alpha(self.subtitle_alpha)
             stx = (INTERNAL_WIDTH - st.get_width()) // 2
-            renderer.surface.blit(st, (stx, 175))
+            renderer.surface.blit(st, (stx, 155))
 
-        # Prompt
-        if self.phase == "waiting" and self.prompt_alpha > 0:
-            p = self.prompt_surface.copy()
-            p.set_alpha(self.prompt_alpha)
-            px = (INTERNAL_WIDTH - p.get_width()) // 2
-            renderer.surface.blit(p, (px, 240))
+        # Language selection
+        if self.phase == "lang_select" and self.prompt_alpha > 0:
+            # Prompt
+            lp = self.lang_prompt_surface.copy()
+            lp.set_alpha(self.prompt_alpha)
+            lpx = (INTERNAL_WIDTH - lp.get_width()) // 2
+            renderer.surface.blit(lp, (lpx, 195))
+
+            ticks = pygame.time.get_ticks()
+            arrow_visible = (ticks // 500) % 2 == 0
+
+            # English option
+            en = self.lang_en_surface if self.selected_lang == 0 else self.lang_en_dim
+            en = en.copy()
+            en.set_alpha(self.prompt_alpha)
+            prefix_en = "> " if self.selected_lang == 0 and arrow_visible else "  "
+            en_full = renderer.font.render(prefix_en + "English", True,
+                                           WHITE if self.selected_lang == 0 else DARK_GRAY)
+            en_full.set_alpha(self.prompt_alpha)
+            enx = (INTERNAL_WIDTH - en_full.get_width()) // 2
+            renderer.surface.blit(en_full, (enx, 220))
+
+            # Finnish option
+            fi_full = renderer.font.render(prefix_en if self.selected_lang != 1 else
+                                           ("> " if arrow_visible else "  ") + "Suomeksi", True,
+                                           WHITE if self.selected_lang == 1 else DARK_GRAY)
+            # Redo properly
+            prefix_fi = "> " if self.selected_lang == 1 and arrow_visible else "  "
+            fi_full = renderer.font.render(prefix_fi + "Suomeksi", True,
+                                           WHITE if self.selected_lang == 1 else DARK_GRAY)
+            fi_full.set_alpha(self.prompt_alpha)
+            fix = (INTERNAL_WIDTH - fi_full.get_width()) // 2
+            renderer.surface.blit(fi_full, (fix, 245))

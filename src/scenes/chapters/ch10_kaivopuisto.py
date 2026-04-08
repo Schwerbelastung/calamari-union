@@ -1,6 +1,5 @@
 from src.scenes.scene_base import SceneBase
 from src.data.constants import WHITE, FRANK_COLORS, MID_GRAY
-from src.data.story import SCENES
 from src.engine.pixel_art import generate_kaivopuisto_scene, generate_frank_sprite
 from src.data.constants import INTERNAL_WIDTH, INTERNAL_HEIGHT
 
@@ -9,7 +8,7 @@ class KaivopuistoScene(SceneBase):
     SCENE_ID = "ch10_kaivopuisto"
 
     def setup(self):
-        data = SCENES[self.SCENE_ID]
+        data = self.get_scene_data()
         self.text_blocks = [
             (data["texts"][0], MID_GRAY),
             (data["texts"][1], FRANK_COLORS["frank_12"]),
@@ -27,28 +26,20 @@ class KaivopuistoScene(SceneBase):
 
         self.choices = [
             (data["choices"][0], self._victory),
-            (data["choices"][1], None),  # handled
+            (data["choices"][1], None),
             (data["choices"][2], DeathScene("death_street_patrol")),
         ]
 
     def on_choice(self, index):
         if index == 1 and len(self.choices) > 2:
             self.text_blocks.append(
-                ("Frank sits beside the other Frank. They don't speak. "
-                 "The sea speaks for them — or doesn't, because the sea "
-                 "is also Finnish.",
-                 FRANK_COLORS["frank_12"])
+                (self.get_extra("talk_1"), FRANK_COLORS["frank_12"])
             )
             self.text_blocks.append(
-                ("After a while, the other Frank stands, buttons his coat, "
-                 "and walks into the water. Not dramatically. "
-                 "Just... walks. As if he's going to work.",
-                 MID_GRAY)
+                (self.get_extra("talk_2"), MID_GRAY)
             )
             self.text_blocks.append(
-                ("Frank watches. Then he stands, turns west, and walks "
-                 "toward Eira. Because that's what Franks do. They walk.",
-                 WHITE)
+                (self.get_extra("talk_3"), WHITE)
             )
             self.current_block = len(self.text_blocks) - 3
             self.scene_manager.renderer.start_typewriter(
@@ -57,7 +48,7 @@ class KaivopuistoScene(SceneBase):
             )
             self.phase = "text"
             self.choices = [
-                ("Walk toward Eira", self._victory),
+                (self.get_extra("talk_choice"), self._victory),
             ]
         else:
             super().on_choice(index)

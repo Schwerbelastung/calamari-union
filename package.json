@@ -1,0 +1,9 @@
+{
+  "name": "calamari-union",
+  "version": "2.1.0",
+  "description": "Calamari Union — a Pygame text adventure inspired by Aki Kaurismäki",
+  "scripts": {
+    "build": "python -m PyInstaller CalamarUnion.spec --distpath dist",
+    "postbuild": "cp dist/CalamarUnion-v1.1.0.exe ."
+  }
+}

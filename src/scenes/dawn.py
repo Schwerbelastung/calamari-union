@@ -284,9 +284,9 @@ class DawnScene(SceneBase):
             bob = math.sin(self.time * 1.5) * 2
             by = int(165 + bob)
 
-            text = "Eesti, here we come!"
+            text = self.get_string("speech_bubble")
             font = renderer.small_font
-            text_surf = font.render(text, False, WHITE)
+            text_surf = font.render(text, True, WHITE)
             tw = text_surf.get_width()
             th = text_surf.get_height()
 
@@ -322,6 +322,6 @@ class DawnScene(SceneBase):
         if self.boat_x < self.boat_target_x + 10:
             pulse = int(abs(math.sin(self.prompt_timer * 1.5)) * 150) + 40
             prompt_color = (pulse, pulse, pulse)
-            prompt = renderer.small_font.render("Press ENTER to continue", False, prompt_color)
+            prompt = renderer.small_font.render(self.get_string("continue_prompt"), True, prompt_color)
             px = (INTERNAL_WIDTH - prompt.get_width()) // 2
             s.blit(prompt, (px, INTERNAL_HEIGHT - 30))

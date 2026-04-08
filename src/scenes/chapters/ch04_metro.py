@@ -1,6 +1,5 @@
 from src.scenes.scene_base import SceneBase
 from src.data.constants import WHITE, FRANK_COLORS, MID_GRAY
-from src.data.story import SCENES
 from src.engine.pixel_art import generate_metro_scene, generate_frank_sprite
 from src.data.constants import INTERNAL_WIDTH, INTERNAL_HEIGHT
 
@@ -9,7 +8,7 @@ class MetroScene(SceneBase):
     SCENE_ID = "ch04_metro"
 
     def setup(self):
-        data = SCENES[self.SCENE_ID]
+        data = self.get_scene_data()
         self.text_blocks = [
             (data["texts"][0], MID_GRAY),
             (data["texts"][1], FRANK_COLORS["frank_6"]),
@@ -22,24 +21,23 @@ class MetroScene(SceneBase):
         self.meet_frank("frank_6")
 
         from src.scenes.chapters.ch05_tunnels import TunnelScene
+        from src.scenes.chapters.ch04_metro_train import MetroTrainScene
         from src.scenes.chapters.ch06_market import MarketScene
 
         tunnel = TunnelScene()
 
         self.choices = [
-            (data["choices"][0], None),  # handled
+            (data["choices"][0], None),
             (data["choices"][1], tunnel),
-            (data["choices"][2], MarketScene()),
+            (data["choices"][2], MetroTrainScene()),
+            (data["choices"][3], MarketScene()),
         ]
         self._tunnel = tunnel
 
     def on_choice(self, index):
         if index == 0 and len(self.choices) > 1:
             self.text_blocks.append(
-                ("Frank waits. The bench is hard. The fluorescent lights "
-                 "hum a single note, endlessly. Time passes. No train comes. "
-                 "No train was ever going to come.",
-                 MID_GRAY)
+                (self.get_extra("wait_text"), MID_GRAY)
             )
             self.current_block = len(self.text_blocks) - 1
             self.scene_manager.renderer.start_typewriter(
@@ -47,7 +45,7 @@ class MetroScene(SceneBase):
             )
             self.phase = "text"
             self.choices = [
-                ("Walk into the tunnel", self._tunnel),
+                (self.get_extra("wait_choice"), self._tunnel),
             ]
         else:
             super().on_choice(index)

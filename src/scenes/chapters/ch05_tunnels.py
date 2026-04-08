@@ -1,6 +1,5 @@
 from src.scenes.scene_base import SceneBase
 from src.data.constants import WHITE, FRANK_COLORS, MID_GRAY
-from src.data.story import SCENES
 from src.engine.pixel_art import generate_tunnel_scene, generate_frank_sprite
 from src.data.constants import INTERNAL_WIDTH, INTERNAL_HEIGHT
 
@@ -9,7 +8,7 @@ class TunnelScene(SceneBase):
     SCENE_ID = "ch05_tunnels"
 
     def setup(self):
-        data = SCENES[self.SCENE_ID]
+        data = self.get_scene_data()
         self.text_blocks = [
             (data["texts"][0], MID_GRAY),
             (data["texts"][1], FRANK_COLORS["frank_7"]),

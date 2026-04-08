@@ -3,6 +3,8 @@ from src.data.constants import (
     WHITE, DARK_GRAY, TEXT_MARGIN_X, TEXT_MARGIN_TOP, SCENE_PAUSE,
     INTERNAL_WIDTH, INTERNAL_HEIGHT,
 )
+from src.data.story import SCENES, SCENES_FI
+from src.data.strings import STRINGS
 
 
 class SceneBase:
@@ -91,12 +93,41 @@ class SceneBase:
         if self.rain:
             self.rain.draw(renderer.surface)
 
-        # Draw all completed text blocks
-        y = TEXT_MARGIN_TOP
+        # Calculate how much vertical space choices need
+        choice_reserve = 0
+        if self.phase == "choices" and self.choices:
+            line_h = renderer.font.get_linesize() + 6
+            choice_reserve = len(self.choices) * line_h + 50
+
+        max_y = INTERNAL_HEIGHT - max(choice_reserve, 30)
+
+        # Measure all content to determine scroll offset
+        block_heights = []
         for i in range(self.current_block):
             text, color = self.text_blocks[i]
-            y = renderer.draw_text_wrapped(text, TEXT_MARGIN_X, y, color)
-            y += 8
+            h = renderer.measure_text_wrapped(text)
+            block_heights.append(h + 8)
+
+        # Measure current typewriter block
+        tw_height = 0
+        if self.current_block < len(self.text_blocks):
+            text, color = self.text_blocks[self.current_block]
+            tw_height = renderer.measure_text_wrapped(text)
+
+        total_height = sum(block_heights) + tw_height
+        scroll = 0
+        if TEXT_MARGIN_TOP + total_height > max_y:
+            scroll = TEXT_MARGIN_TOP + total_height - max_y
+
+        # Draw text blocks with scroll offset
+        y = TEXT_MARGIN_TOP - scroll
+        for i in range(self.current_block):
+            text, color = self.text_blocks[i]
+            if y + block_heights[i] > 0:  # skip fully scrolled-off blocks
+                y = renderer.draw_text_wrapped(text, TEXT_MARGIN_X, y, color)
+                y += 8
+            else:
+                y += block_heights[i]
 
         # Draw current typewriter text
         if self.current_block < len(self.text_blocks):
@@ -109,7 +140,8 @@ class SceneBase:
 
         # Undo hint
         if self.ALLOW_UNDO and self.scene_manager.history:
-            renderer.draw_text("[Backspace] Go back", INTERNAL_WIDTH - 160, INTERNAL_HEIGHT - 16,
+            hint = self.get_string("undo_hint")
+            renderer.draw_text(hint, INTERNAL_WIDTH - 160, INTERNAL_HEIGHT - 16,
                                DARK_GRAY, renderer.small_font)
 
     def on_choice(self, index):
@@ -136,3 +168,20 @@ class SceneBase:
 
     def meet_frank(self, frank_id):
         self.scene_manager.meet_frank(frank_id)
+
+    def get_scene_data(self, scene_id=None):
+        """Get scene data dict for current language."""
+        sid = scene_id or self.SCENE_ID
+        if self.scene_manager.language == "fi":
+            return SCENES_FI.get(sid, SCENES.get(sid, {}))
+        return SCENES.get(sid, {})
+
+    def get_extra(self, key):
+        """Get an extras string for current language."""
+        data = self.get_scene_data()
+        return data.get("extras", {}).get(key, "")
+
+    def get_string(self, key):
+        """Get a UI string for current language."""
+        lang = self.scene_manager.language
+        return STRINGS.get(lang, STRINGS["en"]).get(key, key)

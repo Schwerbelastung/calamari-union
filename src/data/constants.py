@@ -29,6 +29,12 @@ FRANK_COLORS = {
     "frank_10": (180, 130, 170),  # Dusty pink
     "frank_11": (160, 160, 100),  # Khaki
     "frank_12": (120, 140, 180),  # Faded blue
+    "frank_13": (184, 115, 51),   # Copper
+    "frank_14": (178, 178, 178),  # Ash
+    "frank_15": (128, 0, 32),     # Burgundy
+    "frank_16": (80, 120, 60),    # Moss
+    "frank_17": (150, 150, 140),  # Pewter
+    "frank_18": (200, 160, 60),   # Amber
 }
 PEKKA_COLOR = GOLD
 
@@ -40,7 +46,8 @@ LINE_SPACING = 6             # extra pixels between lines
 TEXT_MARGIN_X = 40
 TEXT_MARGIN_TOP = 30
 CHOICE_MARGIN_BOTTOM = 40
-FONT_SIZE = 16               # pixel font target size
+FONT_SIZE = 16               # main text size
+FONT_NAME = "consolas"       # clean, readable, retro feel
 
 # Transitions
 FADE_SPEED = 8               # alpha increment per frame for fades
