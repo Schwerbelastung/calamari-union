@@ -2,7 +2,8 @@
 All narrative text for Calamari Union.
 Organized by scene ID. Each scene has description blocks and choice text.
 Tone: deadpan, dry, minimal. Very Kaurismaki.
-Both English (SCENES) and Finnish (SCENES_FI) versions.
+English (SCENES), Finnish literal translation (SCENES_FI),
+Finnish free version (SCENES_FI2) written fresh in Kaurismaki style.
 """
 
 SCENES = {
@@ -1376,6 +1377,652 @@ SCENES_FI = {
             "Frank ei koskaan saavuttanut Eiraa. Hän saavutti kioskin. Eira on kahden "
             "korttelin päässä etelässä, mutta kaksi korttelia on äärettömyys, kun jalat ovat "
             "päättäneet neuvotella.",
+        ],
+    },
+}
+
+# --- Finnish free version (Kaurismäki-versio) ---
+# Written fresh in Finnish, not translated from English.
+
+SCENES_FI2 = {
+    "intro": {
+        "texts": [
+            "Helsinki. Myöhäinen yö. Tai varhainen aamu. "
+            "Kellolla ei ole väliä, kun ei ole töihin menoa.",
+            "Kalliossa, baarissa, istuu joukko Frankeja. Heillä on yhteinen "
+            "nimi ja yhteinen usko: jossakin on paremmin. Se paikka on Eira.",
+            "Mukana on myös Pekka. Pekka ei ole Frank. Pekka puhuu englantia. "
+            "Kukaan ei tiedä miksi.",
+            "Tänä yönä he lähtevät. Jotkut pääsevät perille. "
+            "Jotkut kuolevat. Jotkut unohtavat minne olivat menossa.",
+            "Sinä olet Frank.",
+        ],
+        "choices": ["Aloita matka"],
+    },
+
+    "ch01_bar": {
+        "texts": [
+            "Baarilla on nimi, mutta kyltissä lukee vain \"Baari\". Se riittää.",
+            "Pöydän ääressä istuu useita Frankeja. Kukaan ei puhu mitään "
+            "tärkeää. Yksi juo hitaasti, kuten mies joka tietää ettei kotona "
+            "odota kukaan. Pekka lukee Hesaria ylösalaisin. Ilmeisesti tahallaan.",
+            "\"Eira\", sanoo yksi Frankeista. Muut nyökkäävät. Suunnitelma "
+            "on valmis. Yksityiskohtia ei ole, mutta se on suunnitelman "
+            "ongelma, ei heidän.",
+        ],
+        "choices": [
+            "Lähde etuovesta",
+            "Kokeile takaovea",
+            "Tilaa vielä yksi",
+            "Häiritse Pekkaa",
+        ],
+        "extras": {
+            "pekka_advice": "Pekka laskee lehden. \"The thing about Eira,\" "
+                "hän sanoo englanniksi, \"is that it exists.\" "
+                "Hän nostaa lehden takaisin. Lisää ei tule.",
+            "pekka_choice": "Lähde etuovesta",
+        },
+    },
+
+    "ch02_alley": {
+        "texts": [
+            "Kuja. Betoni, sade, kissa joka tuijottaa ikkunasta. "
+            "Kissa on oppinut olemaan reagoimatta.",
+            "Roskisten takana kyyhötti mies tummassa takissa. Frank. "
+            "Nousi ylös, katsoi.",
+            "\"Poliiseja\", hän sanoo. \"Joka puolella. Kuin sieniä "
+            "sateen jälkeen, mutta paremmin palkattuja.\"",
+        ],
+        "choices": [
+            "Suuntaa pääkadulle",
+            "Oikaise sisäpihan kautta",
+            "Takaisin baariin",
+        ],
+    },
+
+    "ch02_dumpster": {
+        "texts": [
+            "Takaovi. Kuja. Roskiksia neljä kappaletta ja haju "
+            "joka ansaitsee erillisen maininnan.",
+            "Frank seisoi roskiksen vieressä, käsi sisällä kuin eläinlääkäri. "
+            "Veti esiin paperin. Tutki sitä.",
+            "\"Kartta\", hän sanoi. \"Kai. Voi olla myös ruokalista. "
+            "Tässä valossa kadut ja keitot näyttävät samalta.\"",
+        ],
+        "choices": [
+            "Ota kartta",
+            "Jätä hänet hommiin",
+        ],
+        "extras": {
+            "map_taken": "Frank otti kartan. Se oli kostea ja haisi "
+                "kahvinporoilta. Jotkut kadut oli merkitty nimellä. "
+                "Jotkut ei. Parempaa ei ollut tarjolla.",
+            "map_choice": "Jatka kohti Hämeentietä",
+        },
+    },
+
+    "ch03_hameentie": {
+        "texts": [
+            "Hämeentie. Pitkä, märkä, suora kuin päätös josta ei voi "
+            "perääntyä. Raitiovaunukiskot kiiltivät mutta ratikka ei näkynyt. "
+            "Ratikka ei koskaan näy.",
+            "Parkkeeratun Ladan vieressä seisoi Frank ja henkari. "
+            "Henkari oli väärässä muodossa. Frank oli oikeassa paikassa "
+            "väärästä syystä.",
+        ],
+        "choices": [
+            "Auta varastamaan auto",
+            "Kävele kiskoja pitkin",
+            "Suuntaa Sörnäisten metroon",
+        ],
+    },
+
+    "ch03_courtyard": {
+        "texts": [
+            "Sisäpiha. Hiljaisuus joka tuntuu tahalliselta. "
+            "Pyykit roikkuivat märkinä naruilla.",
+            "Kolmannessa kerroksessa ikkuna valaistu. Nainen. "
+            "Nojasi ulos, sanoi jotain. Ehkä tervehdys. "
+            "Ehkä kysymys. Ehkä kumpikin.",
+        ],
+        "choices": [
+            "Puhu hänelle",
+            "Kiipeä palotikkaita katolle",
+            "Piiloudu ja odota",
+        ],
+        "extras": {
+            "frank_fence": "Frank odotti. Varjossa, paikallaan. "
+                "Sitten aidan yli tuli toinen Frank, kuin olisi sovittu. "
+                "Ei ollut sovittu.",
+            "fence_choice": "Jatka yhdessä metroa kohti",
+        },
+    },
+
+    "ch03_rooftop": {
+        "texts": [
+            "Palotikkaat johtivat katoille. Ne oli rakennettu optimismilla "
+            "joka oli jo haihtunut.",
+            "Katolta Kallio levittäytyi joka suuntaan — lähiö joka pitää "
+            "itsensä kaupunkina. Etelässä valoja. Tuuli toi savun ja jotain "
+            "muuta, ehkä toivon, ehkä pakokaasun.",
+            "Viereinen rakennus oli kahden metrin päässä. Kaksi metriä on "
+            "joko vähän tai paljon riippuen siitä, mitä on menettämässä.",
+        ],
+        "choices": [
+            "Kiipeä alas kadulle",
+            "Hyppää viereiselle katolle",
+            "Hyppää kujalle",
+        ],
+    },
+
+    "ch04_car": {
+        "texts": [
+            "Lada käynnistyi neljännellä yrityksellä. "
+            "\"Hyvä auto\", sanoi Frank. Toisella Frankilla ei ollut kommenttia.",
+            "Helsinki ajettuna on eri kaupunki. Pimeä ja pienempi, "
+            "mutta myös suurempi. Ladan ajovaloissa kaikki näytti "
+            "vähän kellertävältä.",
+            "Hakaniemen kohdalla moottori yskäisi kerran ja kuoli. "
+            "Ei dramaattisesti. Lopetti vain.",
+        ],
+        "choices": [
+            "Jatka jalan torin kautta",
+            "Yritä korjata autoa",
+        ],
+    },
+
+    "ch04_metro": {
+        "texts": [
+            "Metroasema. Loisteputket, kaakeliseinät, rullaportaat "
+            "jotka laskevat hitaammin kuin haluaisi. Institutionaalinen "
+            "tunnelma kuin sairaalassa, mutta ilman odotusta paranemisesta.",
+            "Penkillä istui Frank ja poltti. Tupakointikielto-kyltti oli "
+            "joko rikki tai hän ei välittänyt siitä. Tuijotti tyhjille raiteille.",
+            "\"Junia ei tule\", hän sanoi. \"Ei tunteihin. Ehkä ei enää "
+            "koskaan. Vaikea sanoa eroa.\" Tauko. \"On tosin yksi. "
+            "Perällä. Huoltojuna. Vain seisoo.\"",
+        ],
+        "choices": [
+            "Odota junaa joka tapauksessa",
+            "Kävele tunneliin",
+            "Kävele huoltojunan luo",
+            "Nouse takaisin ylös",
+        ],
+        "extras": {
+            "wait_text": "Frank istui. Penkki oli kova. Loisteputket "
+                "hurisivat yhtä ainoaa säveltä, joka ei ole sävel. "
+                "Juna ei tullut. Juna ei ollut tulossa.",
+            "wait_choice": "Kävele tunneliin",
+        },
+    },
+
+    "ch04_metro_train": {
+        "texts": [
+            "Laiturin perällä seisoi huoltojuna. Se näytti siltä kuin "
+            "se olisi aina seissyt siellä ja aina seisoisi.",
+            "Ovi oli auki. Ohjainlaite yksinkertainen. Frank istui "
+            "kuljettajan paikalla ja katsoi mittaristoa kuin olisi lukenut "
+            "menua josta ei tunnistanut yhtä ainutta ruokaa.",
+            "\"Ajoin kerran trukkia\", hän sanoi. \"Sama idea.\" "
+            "Se ei ole sama idea.",
+        ],
+        "choices": [
+            "Anna hänen ajaa",
+            "Ota itse ohjaimet",
+            "Poistu ja kävele tunnelissa",
+        ],
+        "extras": {
+            "let_drive_1": "Frank istui matkustajan paikalle. Toinen Frank "
+                "työnsi vipua. Juna heräsi, murahti ja lähti liikkeelle "
+                "kuten virkamies maanantaiaamuna.",
+            "let_drive_2": "Tunneli vieri ohi. Asemat ilmestyivät ja "
+                "katosivat kuin lupaukset. Kuljettaja hyräili jotain "
+                "tuntematonta. Juna nousi ylös sataman suuntaan.",
+            "let_drive_choice": "Poistu satamassa",
+        },
+    },
+
+    "ch05_tunnels": {
+        "texts": [
+            "Tunneli nielee valon täydellisesti ja ilman katumusta. "
+            "Vesi tippuu katosta. Rytmi on lähes musiikillinen, "
+            "jos pitää siitä lajista.",
+            "Syvemmältä ilmestyi Frank pimeydestä kuin sieltä olisi tilattu. "
+            "Kolme päivää täällä, hän väitti. Kello pysähtyi tiistaina. "
+            "Tänään on ehkä perjantai.",
+            "\"Tiedän tien\", hän sanoi. Silmät sanoivat muuta. "
+            "Pimeässä kaikki suunnat tuntuvat yhtä oikeilta.",
+        ],
+        "choices": [
+            "Seuraa hänen ohjeitaan",
+            "Mene omaa tietä",
+            "Käänny takaisin",
+        ],
+    },
+
+    "ch05_cafe": {
+        "texts": [
+            "Kahvila oli auki koska se aina on. "
+            "Valot päänsäryn värisiä. Kahvi oikean lämpöistä väärällä hetkellä.",
+            "Neljä Frankia istui neljässä pöydässä ja teeskenteli "
+            "etteivät nähneet toisiaan. Se vaati enemmän vaivaa kuin näytti.",
+            "Viides Frank astui sisään, ravisti vettä takistaan. Nyökkäsi. "
+            "\"Minulla on auto\", hän sanoi. \"Limusiini. No. Pitkä auto. "
+            "Filosofinen ero.\"",
+        ],
+        "choices": [
+            "Lähde Frankin ja auton mukaan",
+            "Lähde takaovesta torille",
+            "Jää vielä kahville",
+        ],
+    },
+
+    "ch05_harbor": {
+        "texts": [
+            "Sörnäisten satama. Diesel, kala, ja se erityinen surullisuus "
+            "joka kuuluu teollisuusmaisemaan yöllä. Nosturit seisoivat "
+            "taivaanrantaa vasten kuin ne odottivat jotain.",
+            "Frank nojasi pollariin ja poltti. Sellaisen miehen ilmeellä "
+            "joka on odottanut laivaa joka ei tule. "
+            "Helsingissä se on monella sama ilme.",
+            "\"Laivat menevät Tallinnaan\", hän sanoi. "
+            "\"Mutta Tallinna ei ole Eira.\" Tauko. "
+            "\"Mikään ei ole Eira. Se on koko ongelma.\"",
+        ],
+        "choices": [
+            "Seuraa rantaviivaa etelään",
+            "Oikaise sisämaahan kahvilan suuntaan",
+            "Yritä nousta rahtilaivaan",
+        ],
+    },
+
+    "ch06_market": {
+        "texts": [
+            "Hakaniemen tori. Kojut kiinni, lukittu. "
+            "Humalainen mies istui arkun päällä ja lauloi jotain "
+            "jolla oli enemmän säkeistöjä kuin tarkoitusta.",
+            "Kojun takaa ilmestyi Frank, ja hänen kanssaan Pekka. "
+            "Pekka sanoi jotain englanniksi taloudesta tai filosofiasta. "
+            "Kukaan ei pyytänyt.",
+            "Etelässä siltoja. Niiden alla musta vesi, joka ei kommentoi.",
+        ],
+        "choices": [
+            "Ylitä Pitkäsilta",
+            "Kulje Siltasaaren kautta",
+            "Seuraa laulavaa juoppoa",
+        ],
+    },
+
+    "ch06_limo": {
+        "texts": [
+            "Auto oli pitkä ja musta ja muistutti ajasta ennen kuin "
+            "auto-käsite muuttui. Sisätiloissa kuusenraikastin ja hiljaisuus.",
+            "Frank istui takapenkille. Toinen Frank ajoi. "
+            "Ohi liukui katuja joita Frank ei tunnistanut, "
+            "vaikka Helsinki ei ole iso kaupunki.",
+            "\"Minne?\" kuljettaja kysyi kahden kilometrin jälkeen. "
+            "Suunnittelemattomuus on kansallinen ominaisuus.",
+        ],
+        "choices": [
+            "\"Etelään. Tuomiokirkolle.\"",
+            "\"Jätä minut Kruununhakaan\"",
+            "\"Aja päin punaista, minulla on kiire\"",
+        ],
+    },
+
+    "ch07_park": {
+        "texts": [
+            "Kaisaniemen puisto. Puut seisovat kuten puut seisovat — "
+            "paikallaan, ilman valituksia. Kaukaa kuului meren ääni. "
+            "Tai liikenteen.",
+            "Helsingissä ero on pieni.",
+            "Penkillä nukkui Frank, takki korviin vedettynä. "
+            "Hengitti tasaisesti. Se oli rauhallisin asia koko yössä.",
+        ],
+        "choices": [
+            "Herätä hänet, jatka yhdessä",
+            "Anna hänen nukkua, jatka yksin",
+            "Lepää penkillä sinäkin",
+        ],
+    },
+
+    "ch07_katajanokka": {
+        "texts": [
+            "Katajanokka. Punainen tiili, raudan haju, suurlähetystöjä "
+            "jotka nukkuvat porttien takana. "
+            "Katuvalo ei paljasta mitään tarpeetonta.",
+            "Frank seisoi Jäänmurtajamuseon edessä ja luki kylttiä "
+            "jota hän ei nähnyt pimeässä. \"Tiesit siitä\", hän sanoi, "
+            "\"että jäänmurtajat murtavat jään omalla painollaan?\" "
+            "Tauko. \"Kuin vuokranantajat.\"",
+            "Etelässä Uspenskin katedraalin siluetti. Sen takana Esplanadi.",
+        ],
+        "choices": [
+            "Jatka etelään kohti Esplanadia",
+            "Kävele tuomiokirkon aukiolle",
+            "Suuntaa lauttaterminaaliin",
+        ],
+    },
+
+    "ch08_kruununhaka": {
+        "texts": [
+            "Kruununhaka. Rakennukset isompia, siistimpiä, vanhempia. "
+            "Ne katsovat alaspäin tavalla joka ei ole arkkitehtoninen valinta.",
+            "Arkkitehtuuri kertoo rahasta ja historiasta. "
+            "Molemmat ovat Kruununhaan vanhoja asukkaita. Frank ei ole.",
+            "Poliisiauto liukui kadulla kuin hai matalassa vedessä, "
+            "valot pois päältä. Tarkoitus on selvä.",
+        ],
+        "choices": [
+            "Väistä oviaukkoon",
+            "Kävele kuin ei mitään",
+            "Juokse",
+        ],
+        "extras": {
+            "police_pass": "Frank käveli. Poliisiauto ohitti. Sen miehistö "
+                "joi kahvia ja kiistelivät jalkapallosta. He eivät "
+                "katsoneet Frankia. Frank ei katsonut heitä. "
+                "Kaksi laivaa yössä, molemmat tietäen toisen läsnäolosta.",
+            "police_choice": "Jatka Esplanadille",
+        },
+    },
+
+    "ch08_senate_square": {
+        "texts": [
+            "Senaatintori. Tuomiokirkko valkoinen, suuri, täsmälleen "
+            "sellainen kuin Jumala tilaisi jos tilaisi. "
+            "Portaat riittävät armeijalle. Tänä yönä pelkkiä "
+            "kyyhkysiä ja hiljaisuutta.",
+            "Portaiden juuressa Aleksanteri II:n patsas katsoo tyhjää "
+            "toria. Hän on seissyt siinä sata kolmekymmentä vuotta. "
+            "Kasvoilla se ilme kun on ollut väärässä kauan aikaa "
+            "mutta ei voi lähteä.",
+            "Kadut viettyvät etelään. Kohti merta, Esplanadia "
+            "ja sitä mikä voisi olla Eira.",
+        ],
+        "choices": [
+            "Ylitä tori etelään kohti Esplanadia",
+            "Kävele itään kohti Katajanokkaa",
+            "Istu portailla ja lepää",
+        ],
+    },
+
+    "ch09_esplanadi": {
+        "texts": [
+            "Esplanadi. Leveä, puita, penkkejä. Ensimmäistä kertaa "
+            "tänä yönä meren haju — suola, diesel, mahdollisuus.",
+            "Kaksi Frankia kiistelivät. \"Eira on etelässä.\" "
+            "\"Eira on käsite.\" He olivat kiistäneet Kalliosta asti.",
+            "\"Molemmat voivat olla oikeassa\", sanoi kolmas Frank "
+            "jota ei ollut aiemmin ollut. Kukaan ei kysynyt mistä hän tuli.",
+        ],
+        "choices": [
+            "Mene etelään kohti Kaivopuistoa",
+            "Mene länteen kohti Kamppia",
+            "Seuraa riiteleviä Frankeja",
+            "Ota Bulevardi",
+        ],
+        "extras": {
+            "follow_south": "Frankit lopettivat kiistelyn ja kävelivät etelään. "
+                "Frank seurasi. Kiistely jatkui, hiljempaa, "
+                "kuin meri jo rauhoittaisi heitä.",
+            "follow_south_choice": "Jatka etelään",
+            "follow_west": "Frankit kääntyivät länteen. \"Oikotie\", sanoi toinen. "
+                "Frank seurasi. Oikotie päättyy Kamppiin.",
+            "follow_west_choice": "...",
+        },
+    },
+
+    "ch09_bulevardi": {
+        "texts": [
+            "Bulevardi. Nimi kuulostaa ranskalaiselta mutta katu on "
+            "suomalainen: pitkä, hiljainen, menossa jonnekin kertomatta.",
+            "Kulmassa kioski loisti kuin majakka niille jotka ovat "
+            "kadottaneet kompassin. Mies osti makkaraa. Toinen mies katsoi. "
+            "Helsinki yöllä.",
+            "Frank nojasi lyhtypylvääseen, katsoi bussiaikataulua. "
+            "\"Eira on tuolla\", hän sanoi osoittaen pimeyteen. "
+            "\"Kaksi korttelia. Ehkä kolme. Yöllä matkat venyvät.\"",
+        ],
+        "choices": [
+            "Jatka kohti Eiraa",
+            "Pysähdy kioskilla",
+            "Oikaise Kaivopuiston kautta",
+        ],
+    },
+
+    "ch10_kaivopuisto": {
+        "texts": [
+            "Kaivopuisto. Meri vihdoin oikeasti läsnä, ei vain mainittuna. "
+            "Tähdet näkyivät. Tuuli toi suolaa.",
+            "Frank seisoi rannalla. Hänen siluettinsa oli se asia "
+            "Suomessa joka selittää kaiken muun.",
+            "Lännessä Eira. Ehkä kaksi korttelia. Ehkä kolme. "
+            "Valot jotka eivät ole Kallio.",
+        ],
+        "choices": [
+            "Kävele rantaa pitkin kohti Eiraa",
+            "Istu Frankin viereen",
+            "Kulje katua pitkin",
+        ],
+        "extras": {
+            "talk_1": "Frank istui. Toinen Frank ei puhunut. Meri ei puhunut. "
+                "Hiljaisuus oli suomalaista — ei köyhää eikä rikasta, vain tarkka.",
+            "talk_2": "Lopulta toinen Frank nousi, nappasi napit kiinni "
+                "ja käveli veteen. Ei hukuakseen. Vain kävelemään, "
+                "kuten miehellä olisi asiaa.",
+            "talk_3": "Frank katsoi kunnes toinen katosi. Sitten kääntyi "
+                "länteen. Koska Frankit kävelevät. Se on heidän luonteensa.",
+            "talk_choice": "Kävele kohti Eiraa",
+        },
+    },
+
+    "eira": {
+        "texts": [
+            "Eira.",
+            "Taivas muuttui. Ei vielä aurinko — se tulisi myöhemmin — "
+            "mutta pimeys oli jo väsynyt. Jugend-talot seisoivat siisteinä "
+            "kuten talot joille ei ole tapahtunut mitään pahaa.",
+            "Meri oli siinä. Aallot koskettivat kiviä varoen, "
+            "kuten vieras joka ei tiedä onko tervetullut.",
+            "Olit Eirassa.",
+            "Se näytti Helsingiltä.",
+            "Mutta oli Eira. Ja se riitti. "
+            "Tai ainakin se oli kaikki mitä oli.",
+        ],
+    },
+
+    # Kuolemat
+
+    "death_bar_raid": {
+        "texts": [
+            "Yhdestä juomasta tuli kaksi. Kahdesta tuli hiljaisuus. "
+            "Kolmannen kohdalla tuli poliisi.",
+            "Frankin matka päättyi baariin. Symmetriaa siinä. "
+            "Poliisi ei arvosta symmetriaa.",
+        ],
+    },
+    "death_bar_return": {
+        "texts": [
+            "Baari oli täynnä poliiseja. He joivat lämmintä olutta "
+            "ja katselivat ympäriinsä kuten ammattilaiset.",
+            "Taaksepäin ei mennä. Frank tiesi sen. Meni silti.",
+        ],
+    },
+    "death_car_fix": {
+        "texts": [
+            "Frank avasi konepellin. Moottori katsoi häntä takaisin — "
+            "monimutkainen, välinpitämätön, ratkaisematon.",
+            "Poliisi saapui ennen kuin Frank keksi mitään. "
+            "Lada kuoli konepelti auki. Ainakin se kuoli rehellisesti.",
+        ],
+    },
+    "death_tram_tracks": {
+        "texts": [
+            "Frank käveli kiskoja pitkin. Ratikka ei kuulu näin myöhään, "
+            "hän ajatteli. Kiskot olivat tyhjiä. Yö oli hiljainen.",
+            "Ratikka kuului.",
+            "Kuljettaja, joka oli ajanut tätä reittiä kahdeksan vuotta, "
+            "kuvaili myöhemmin Frankia \"mieheksi joka näytti yllättyneeltä, "
+            "että Helsingissä on julkinen liikenne.\"",
+        ],
+    },
+    "death_rooftop_fall": {
+        "texts": [
+            "Frank hyppäsi. Hetken hän oli vapaa. "
+            "Painovoima ei ole kiinnostunut vapaudesta.",
+            "Kuja otti hänet vastaan betonin kohteliaisuudella. "
+            "Kolme kerrosta ei ole pitkä matka. Riittää kuitenkin.",
+        ],
+    },
+    "death_metro_crash": {
+        "texts": [
+            "Frank työnsi vipua eteenpäin. Juna innostui. "
+            "Tunnelin seinä ei.",
+            "Helsingin metro kirjasi myöhemmin pienen huoltopoikkeaman. "
+            "Frank, josta oli tullut osa infrastruktuuria, "
+            "ei ollut tavoitettavissa kommenttia varten.",
+        ],
+    },
+    "death_limo_police": {
+        "texts": [
+            "Valo oli punainen. Kuljettaja ajoi läpi. Poliisiauto, "
+            "joka oli odottanut risteyksessä koko yön, "
+            "ei jäänyt odottamaan enempää.",
+            "Kaksi Frankia varastetussa limusiinissa, päin punaista, "
+            "kello kolme yöllä. Poliisiraportti kirjoittaa itsensä. "
+            "Tuomari ei tarvitse kauaa.",
+        ],
+    },
+    "death_coast_guard": {
+        "texts": [
+            "Frank kiipesi laivaan. "
+            "Pääsi kolme askelta ennen kuin taskulamppu löysi hänet.",
+            "Laiva meni Lyypekkiin. Frank meni säilöön. "
+            "Lyypekki ei ole Eira, mutta säilökään ei ole. "
+            "Ainakin säilössä on lämmin.",
+        ],
+    },
+    "death_senate_patrol": {
+        "texts": [
+            "Frank istui portaille. Kivi oli kylmä. "
+            "Silmät painuivat kiinni vain hetkeksi.",
+            "Partioauto löysi hänet aamuneljältä nukkumassa "
+            "pylvästä vasten kuin pyhimys joka on luopunut ihmeistä. "
+            "Poliisit olivat ystävällisiä. Käsiraudat eivät olleet.",
+        ],
+    },
+    "death_tunnel_train": {
+        "texts": [
+            "Frank valitsi oman tien. "
+            "Pimeässä kaikki tiet tuntuvat yhtä hyviltä.",
+            "Kuljettaja ei nähnyt Frankia. Frank ei nähnyt kuljettajaa. "
+            "Kaksi tuntematonta samassa tunnelissa, lyhyesti.",
+        ],
+    },
+    "death_police_stop": {
+        "texts": [
+            "\"Käyttäydy luonnollisesti\" toimii vain niille jotka tietävät "
+            "miltä luonnollinen näyttää. Frank Kruununhaassa kello kolme "
+            "yöllä pitkässä takissa ei näytä luonnolliselta.",
+            "Poliisit olivat kohteliaita. Se teki asiasta pahemman.",
+        ],
+    },
+    "death_police_run": {
+        "texts": [
+            "Frank juoksi. Poliisi juoksi perässä. Frank oli nopea "
+            "mutta yö oli nopeampi, ja jalkakäytävä otti hänet kiinni "
+            "suomalaisen talven tarkkuudella.",
+            "Juoksemista poliisilta karkuun Kruununhaassa. "
+            "Enemmän liikuntaa kuin tämä kaupunginosa on nähnyt pitkään aikaan.",
+        ],
+    },
+    "death_street_patrol": {
+        "texts": [
+            "Katu vie suoraan poliisin tiesulun läpi. "
+            "He olivat odottaneet koko yön juuri sellaista Frankia.",
+            "Niin lähellä Eiraa. Meren haju kantautui. "
+            "Mutta meri tuoksuu samalta poliisiautostakin.",
+        ],
+    },
+
+    # Eksymiset
+
+    "lost_woman": {
+        "texts": [
+            "Hän keitti kahvia. Asunto oli lämmin. Siellä oli kissa. "
+            "Kissa ei tiennyt Eirasta eikä välittänyt tietää.",
+            "Frank istui. Hän ei noussut enää. Kahvi vaihtui illalliseksi, "
+            "illallinen aamupalaksi, aamupala vuosiksi.",
+            "Frank ei koskaan saavuttanut Eiraa. Ehkä Eira oli aina tämä: "
+            "lämmin keittiö, vieras kissa, kahvi jonka joku muu keitti.",
+        ],
+    },
+    "lost_drunk": {
+        "texts": [
+            "Juopon laulu oli tango. Frank tiesi sanat, vaikka ei "
+            "olisi pitänyt. He lauloivat yhdessä. "
+            "Laulussa oli neljäkymmentä säkeistöä.",
+            "Kolmenkymmenenseitsemännen säkeistön kohdalla Frank "
+            "unohti Eiran. Neljännenkymmenennen kohdalla hän unohti kaiken.",
+            "Hän heräsi Kalliossa. Aamu. Matka oli ohi ennen kuin "
+            "se päättyi. Tango jatkui.",
+        ],
+    },
+    "lost_bench": {
+        "texts": [
+            "Penkki oli mukava väsymyksen tavalla. "
+            "Frank sulki silmät hetkeksi.",
+            "Aamu löysi hänet siitä. Puisto täynnä koiranulkoiluttajia "
+            "ja lenkkeilijöitä ja ihmisiä joilla oli mihin mennä.",
+            "Frank ei koskaan saavuttanut Eiraa. Hän saavutti penkin. "
+            "Jotkut matkat päättyvät sinne minne jalat päättävät.",
+        ],
+    },
+    "lost_kamppi": {
+        "texts": [
+            "Länsi. Kamppi. Linja-autoasema. Paikka, josta lähdetään, "
+            "ei johon saavutaan. Frank oli sekoittanut suuntansa.",
+            "Hän nousi bussiin. Se meni Espooseen. "
+            "Espoo ei ole Eira. Espoo ei oikein ole mitään.",
+            "Frank ei koskaan saavuttanut Eiraa. Hän saavutti lähiön. "
+            "Tämä on surullisin loppu.",
+        ],
+    },
+    "lost_cafe": {
+        "texts": [
+            "Frank tilasi toisen kahvin. Tarjoilija, joka oli nähnyt "
+            "tämän aiemmin, ei sanonut mitään. Kahvi tuli. Sama kahvi.",
+            "Muut Frankit lähtivät yksi kerrallaan. Frank jäi. Kahvi jäi.",
+            "Hän oli siellä vielä aamulla kun päivävuoro tuli. "
+            "Eira on etelässä. Kahvila on tässä. "
+            "Jotkut etäisyydet ovat liian pitkiä kahville.",
+        ],
+    },
+    "lost_ferry": {
+        "texts": [
+            "Lauttaterminaali oli valoisa, lämmin, täynnä ihmisiä "
+            "joilla oli lippu Tukholmaan. Tukholma ei ole Eira. "
+            "Tukholma ei ole edes Helsinki. "
+            "Mutta lautta lähtee kahdessakymmenessä minuutissa.",
+            "Hän nousi laivaan. Itämeri oli musta, laaja ja kiinnostumaton. "
+            "Frank seisoi kannella ja katsoi Helsingin pienenevän.",
+            "Hän ei koskaan saavuttanut Eiraa. "
+            "Hän saavutti tax free -myymälän. "
+            "Viina on halvempaa, mikä on suomalaisin lohdutus mitä on.",
+        ],
+    },
+    "lost_kiosk": {
+        "texts": [
+            "Frank tilasi makkaran. Se tuli sämpylässä sinapin kera. "
+            "Hän söi sen seisten, suomalaisessa perinteessä "
+            "jossa ruoka syödään tunnustamatta nautintoa.",
+            "Hän tilasi toisen. Sitten kolmannen. Kioskimies, "
+            "joka oli tehnyt yövuoroja seitsemäntoista vuotta, "
+            "tunnisti ilmeen. Ilme miehellä, joka on lakannut kävelemästä.",
+            "Frank ei koskaan saavuttanut Eiraa. "
+            "Eira on kaksi korttelia etelässä. "
+            "Kaksi korttelia on ääretön matka kun jalat ovat kieltäytyneet.",
         ],
     },
 }

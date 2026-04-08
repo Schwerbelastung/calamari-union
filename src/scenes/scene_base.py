@@ -3,7 +3,7 @@ from src.data.constants import (
     WHITE, DARK_GRAY, TEXT_MARGIN_X, TEXT_MARGIN_TOP, SCENE_PAUSE,
     INTERNAL_WIDTH, INTERNAL_HEIGHT,
 )
-from src.data.story import SCENES, SCENES_FI
+from src.data.story import SCENES, SCENES_FI, SCENES_FI2
 from src.data.strings import STRINGS
 
 
@@ -172,7 +172,10 @@ class SceneBase:
     def get_scene_data(self, scene_id=None):
         """Get scene data dict for current language."""
         sid = scene_id or self.SCENE_ID
-        if self.scene_manager.language == "fi":
+        lang = self.scene_manager.language
+        if lang == "fi2":
+            return SCENES_FI2.get(sid, SCENES.get(sid, {}))
+        if lang == "fi":
             return SCENES_FI.get(sid, SCENES.get(sid, {}))
         return SCENES.get(sid, {})
 

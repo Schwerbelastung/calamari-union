@@ -21,7 +21,7 @@ class SplashScene(SceneBase):
         self.phase = "fade_title"
         self.title_surface = None
         self.subtitle_surface = None
-        self.selected_lang = 0  # 0 = English, 1 = Suomeksi
+        self.selected_lang = 0  # 0 = English, 1 = Suomeksi (käännös), 2 = Kaurismäki-versio
 
     def setup(self):
         renderer = self.scene_manager.renderer
@@ -78,11 +78,12 @@ class SplashScene(SceneBase):
         elif self.phase == "lang_select":
             self.prompt_alpha = min(255, self.prompt_alpha + 5)
             if input_handler.just_pressed(pygame.K_UP):
-                self.selected_lang = 0
+                self.selected_lang = max(0, self.selected_lang - 1)
             elif input_handler.just_pressed(pygame.K_DOWN):
-                self.selected_lang = 1
+                self.selected_lang = min(2, self.selected_lang + 1)
             elif input_handler.just_pressed(pygame.K_RETURN):
-                self.scene_manager.language = "en" if self.selected_lang == 0 else "fi"
+                lang_map = {0: "en", 1: "fi", 2: "fi2"}
+                self.scene_manager.language = lang_map[self.selected_lang]
                 self.goto(self.next_scene)
 
     def draw(self, renderer):
@@ -118,25 +119,15 @@ class SplashScene(SceneBase):
             ticks = pygame.time.get_ticks()
             arrow_visible = (ticks // 500) % 2 == 0
 
-            # English option
-            en = self.lang_en_surface if self.selected_lang == 0 else self.lang_en_dim
-            en = en.copy()
-            en.set_alpha(self.prompt_alpha)
-            prefix_en = "> " if self.selected_lang == 0 and arrow_visible else "  "
-            en_full = renderer.font.render(prefix_en + "English", True,
-                                           WHITE if self.selected_lang == 0 else DARK_GRAY)
-            en_full.set_alpha(self.prompt_alpha)
-            enx = (INTERNAL_WIDTH - en_full.get_width()) // 2
-            renderer.surface.blit(en_full, (enx, 220))
-
-            # Finnish option
-            fi_full = renderer.font.render(prefix_en if self.selected_lang != 1 else
-                                           ("> " if arrow_visible else "  ") + "Suomeksi", True,
-                                           WHITE if self.selected_lang == 1 else DARK_GRAY)
-            # Redo properly
-            prefix_fi = "> " if self.selected_lang == 1 and arrow_visible else "  "
-            fi_full = renderer.font.render(prefix_fi + "Suomeksi", True,
-                                           WHITE if self.selected_lang == 1 else DARK_GRAY)
-            fi_full.set_alpha(self.prompt_alpha)
-            fix = (INTERNAL_WIDTH - fi_full.get_width()) // 2
-            renderer.surface.blit(fi_full, (fix, 245))
+            options = [
+                STRINGS["en"]["lang_en"],
+                STRINGS["en"]["lang_fi"],
+                STRINGS["en"]["lang_fi2"],
+            ]
+            for i, label in enumerate(options):
+                prefix = "> " if i == self.selected_lang and arrow_visible else "  "
+                color = WHITE if i == self.selected_lang else DARK_GRAY
+                surf = renderer.font.render(prefix + label, True, color)
+                surf.set_alpha(self.prompt_alpha)
+                sx = (INTERNAL_WIDTH - surf.get_width()) // 2
+                renderer.surface.blit(surf, (sx, 215 + i * 22))
